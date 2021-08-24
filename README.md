@@ -6,5 +6,5 @@
 - Noel Araoz
 - Rostirolla, Pablo 
 
-##Actividad:
+## Actividad:
 ##### 4- Facturación de proyectos y productos
