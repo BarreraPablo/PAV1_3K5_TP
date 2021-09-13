@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PAV_3K5_TP.Presentacion;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,16 @@ using System.Windows.Forms;
 
 namespace PAV_3K5_TP
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
+
+            using(frmLogin frm = new frmLogin())
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }
