@@ -27,6 +27,19 @@ namespace PAV_3K5_TP.Datos
             }
         }
 
+        private BarrioDao _barrioDao;
+
+        public BarrioDao BarrioDao
+        {
+            get 
+            {
+                if (_barrioDao == null)
+                    _barrioDao = new BarrioDao(connection, transaction);
+                return _barrioDao; 
+            }
+        }
+
+
         public void Open()
         {
             connection.Open();

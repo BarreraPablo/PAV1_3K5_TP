@@ -17,6 +17,11 @@ namespace PAV_3K5_TP
         {
             InitializeComponent();
 
+            using(frmBarrio frm = new frmBarrio())
+            {
+                frm.ShowDialog();
+            }
+
             using(frmLogin frm = new frmLogin())
             {
                 if (frm.ShowDialog() != DialogResult.OK) {

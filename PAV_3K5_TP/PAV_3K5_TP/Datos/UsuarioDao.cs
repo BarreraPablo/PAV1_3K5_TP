@@ -1,11 +1,6 @@
 ﻿using Dapper;
 using PAV_3K5_TP.Negocio.Entidades;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PAV_3K5_TP.Datos
 {

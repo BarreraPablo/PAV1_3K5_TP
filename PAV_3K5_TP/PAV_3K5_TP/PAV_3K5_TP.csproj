@@ -49,10 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\BarrioDao.cs" />
     <Compile Include="Datos\UnitOfWork.cs" />
     <Compile Include="Datos\UsuarioDao.cs" />
+    <Compile Include="Negocio\Entidades\Barrio.cs" />
     <Compile Include="Negocio\Entidades\Usuario.cs" />
+    <Compile Include="Negocio\Servicios\GestorBarrios.cs" />
     <Compile Include="Negocio\Servicios\GestorUsuarios.cs" />
+    <Compile Include="Presentacion\frmBarrio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmBarrio.Designer.cs">
+      <DependentUpon>frmBarrio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentacion\frmBarrio.resx">
+      <DependentUpon>frmBarrio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
