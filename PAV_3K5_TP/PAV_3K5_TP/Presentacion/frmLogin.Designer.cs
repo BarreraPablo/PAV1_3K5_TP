@@ -42,6 +42,7 @@ namespace PAV_3K5_TP.Presentacion
             // 
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(104, 68);
+            this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(181, 26);
             this.txtUsuario.TabIndex = 0;
@@ -70,7 +71,9 @@ namespace PAV_3K5_TP.Presentacion
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(104, 121);
+            this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(181, 26);
             this.txtPassword.TabIndex = 2;
             // 
@@ -121,6 +124,7 @@ namespace PAV_3K5_TP.Presentacion
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Inicio de sesión";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

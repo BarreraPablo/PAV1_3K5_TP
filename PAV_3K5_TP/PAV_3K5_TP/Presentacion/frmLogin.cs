@@ -24,20 +24,28 @@ namespace PAV_3K5_TP.Presentacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (!validarCampos())
+            try
             {
-                return;
+                if (!validarCampos())
+                {
+                    return;
+                }
+
+                var usuarioLogeado = gestorUsuarios.validarUsuario(txtUsuario.Text, txtPassword.Text);
+
+                if(usuarioLogeado)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Dispose();
+                } else
+                {
+                    MessageBox.Show("Usuario o password incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
-
-            var usuarioLogeado = gestorUsuarios.validarUsuario(txtUsuario.Text, txtPassword.Text);
-
-            if(usuarioLogeado)
+            catch (Exception ex)
             {
-                this.DialogResult = DialogResult.OK;
-                this.Dispose();
-            } else
-            {
-                MessageBox.Show("Usuario o password incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Un error inesperado a ocurrido: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -60,7 +68,28 @@ namespace PAV_3K5_TP.Presentacion
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            var resultado = MessageBox.Show("¿Desea salir de la aplicación?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(resultado == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+        }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(this.DialogResult != DialogResult.OK)
+            {
+                var resultado = MessageBox.Show("¿Desea salir de la aplicación?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    this.Dispose();
+                } else
+                {
+                    this.DialogResult = DialogResult.None;
+                }
+            } 
         }
     }
 }
