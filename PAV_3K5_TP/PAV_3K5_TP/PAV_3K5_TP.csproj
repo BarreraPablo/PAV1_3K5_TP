@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Datos\UnitOfWork.cs" />
     <Compile Include="Datos\UsuarioDao.cs" />
+    <Compile Include="Negocio\Entidades\Usuario.cs" />
     <Compile Include="Negocio\Servicios\GestorUsuarios.cs" />
     <Compile Include="Presentacion\frmLogin.cs">
       <SubType>Form</SubType>
@@ -95,8 +96,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Negocio\Entidades\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

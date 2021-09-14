@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using PAV_3K5_TP.Negocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,12 +20,13 @@ namespace PAV_3K5_TP.Datos
             _transaction = transaction;
         }
 
-        public void MetodoTest()
+        public Usuario obtenerPorUsernameYPassword(string usuario, string password)
         {
-            string sql = @"INSERT INTO USUARIOS(id_perfil,usuario,password,email,estado,borrado) " +
-                "VALUES(1,'TEST','1ASDASD','CONTACTO@GMAIL.COM','S',0)";
+            string sql = @"SELECT ID_PERFIL, USUARIO, PASSWORD, EMAIL, ESTADO, BORRADO ";
+            sql += "FROM USUARIOS ";
+            sql += "WHERE USUARIO = @usuario AND PASSWORD = @password";
 
-            var affectedRows1 = _connection.Execute(sql, transaction: _transaction);
+            return _connection.QueryFirstOrDefault<Usuario>(sql, new { usuario=usuario, password=password } , transaction: _transaction);
         }
     }
 }

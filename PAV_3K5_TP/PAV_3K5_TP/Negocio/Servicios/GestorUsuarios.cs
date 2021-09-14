@@ -4,14 +4,17 @@ namespace PAV_3K5_TP.Negocio.Servicios
 {
     public class GestorUsuarios
     {
-        private UnitOfWork usuarioDao;
+        private UnitOfWork unitOfWork;
         public GestorUsuarios()
         {
-            usuarioDao = new UnitOfWork();
+            unitOfWork = new UnitOfWork();
+        }
 
-            usuarioDao.Open();
-            usuarioDao.UsuarioDao.MetodoTest();
-            usuarioDao.Dispose();
+        public bool validarUsuario(string userName, string password)
+        {
+            var usuario = unitOfWork.UsuarioDao.obtenerPorUsernameYPassword(userName, password);
+
+            return usuario != null;
         }
     }
 }

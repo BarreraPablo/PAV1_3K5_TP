@@ -77,10 +77,10 @@ namespace PAV_3K5_TP.Presentacion
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(80, 19);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(56, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 24);
+            this.label3.Size = new System.Drawing.Size(201, 31);
             this.label3.TabIndex = 4;
             this.label3.Text = "Inicio de sesión";
             // 
@@ -104,6 +104,7 @@ namespace PAV_3K5_TP.Presentacion
             this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmLogin
             // 
@@ -119,7 +120,7 @@ namespace PAV_3K5_TP.Presentacion
             this.Controls.Add(this.txtUsuario);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmLogin";
+            this.Text = "Inicio de sesión";
             this.ResumeLayout(false);
             this.PerformLayout();
 

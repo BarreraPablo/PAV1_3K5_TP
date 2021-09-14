@@ -19,7 +19,9 @@ namespace PAV_3K5_TP
 
             using(frmLogin frm = new frmLogin())
             {
-                frm.ShowDialog();
+                if (frm.ShowDialog() != DialogResult.OK) {
+                    Environment.Exit(0);
+                };
             }
         }
     }
