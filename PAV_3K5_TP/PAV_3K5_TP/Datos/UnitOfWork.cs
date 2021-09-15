@@ -6,7 +6,7 @@ namespace PAV_3K5_TP.Datos
 {
     public class UnitOfWork : IDisposable
     {
-        public string connString = "Server=localhost;Database=TPS;Trusted_Connection=True;";
+        public string connString = @"Server=DESKTOP-0N82K3J\SQLEXPRESS;Database=tps;Trusted_Connection=True;";
         private IDbConnection connection;
         private IDbTransaction transaction;
 
