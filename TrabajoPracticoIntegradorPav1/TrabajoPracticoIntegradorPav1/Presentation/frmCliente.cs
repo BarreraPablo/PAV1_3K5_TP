@@ -39,7 +39,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
             try
             {
-                string consulta = "SELECT * FROM Barrios";
+                string consulta = "SELECT * FROM Barrios WHERE borrado IS NULL";
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
