@@ -30,6 +30,10 @@ namespace TrabajoPracticoIntegradorPav1.Entities
             this.id_barrio = id_barrio;
             this.id_contacto = id_contacto;
         }
+        public Client()
+        {
+
+        }
 
     }
 }

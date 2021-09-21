@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccesLayer\AbmClient\AddClient.cs" />
     <Compile Include="DataAccesLayer\AbmNeighborhood\AddNeighborhood.cs" />
     <Compile Include="DataAccesLayer\AbmNeighborhood\DeleteNeighborhood.cs" />
     <Compile Include="DataAccesLayer\AbmNeighborhood\GetNeighborhood.cs" />

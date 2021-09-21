@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient;
+using TrabajoPracticoIntegradorPav1.Entities;
 
 namespace TrabajoPracticoIntegradorPav1.Presentation
 {
@@ -23,10 +25,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             try
             {
                 CargarCombo();
+                CargarGrilla();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al intentar conectarse con la base de datos");
+                MessageBox.Show("Error al intentar conectarse con la base de datos" + ex.Message);
             }
             
         }
@@ -65,6 +68,73 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             finally
             {
                 cn.Close();
+            }
+        }
+
+        //Metodo para cargar la grilla de clientes
+        private void CargarGrilla()
+        {
+
+            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["conexionDB"];
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+
+            try
+            {
+
+                string consulta = "select cuit, razon_social, calle, numero, fecha_alta, Barrios.nombre AS barrio from Clientes INNER JOIN Barrios ON Clientes.id_barrio = Barrios.id_barrio WHERE Clientes.borrado IS NULL";
+
+                cmd.Parameters.Clear();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                cn.Open();
+                cmd.Connection = cn;
+
+                DataTable table = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(table);
+
+                dgvClientes.DataSource = table;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+
+
+        }
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Client c = new Client();
+            c.cuit = int.Parse(txtCuit.Text);
+            c.razon_social = txtRazonSocial.Text;
+            c.calle = txtCalle.Text;
+            c.numero = int.Parse(txtNumeroCalle.Text);
+            c.fecha_alta = DateTime.Parse(txtFechaAlta.Text);
+            c.id_barrio = cmbBarrio.SelectedIndex;
+
+            try
+            {
+                bool result = AddClient.Add(c);
+                if (result)
+                {
+                    MessageBox.Show("Cliente agregado");
+                    CargarGrilla();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un error inesperado al intentas cargar el cliente");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

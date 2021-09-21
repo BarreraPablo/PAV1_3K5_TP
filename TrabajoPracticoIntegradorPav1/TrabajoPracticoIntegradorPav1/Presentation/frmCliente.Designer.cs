@@ -30,7 +30,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtNumero = new System.Windows.Forms.MaskedTextBox();
+            this.txtNumeroCalle = new System.Windows.Forms.MaskedTextBox();
             this.cmbBarrio = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razon_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,15 +54,21 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.fecha_alta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_barrio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.txtNumero);
+            this.groupBox1.Controls.Add(this.btnAgregar);
+            this.groupBox1.Controls.Add(this.btnEditar);
+            this.groupBox1.Controls.Add(this.btnEliminar);
+            this.groupBox1.Controls.Add(this.txtNumeroCalle);
             this.groupBox1.Controls.Add(this.cmbBarrio);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
@@ -78,19 +84,19 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(764, 109);
+            this.groupBox1.Size = new System.Drawing.Size(764, 153);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta de cliente";
             // 
-            // txtNumero
+            // txtNumeroCalle
             // 
-            this.txtNumero.Location = new System.Drawing.Point(689, 28);
-            this.txtNumero.Mask = "9999999";
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(55, 23);
-            this.txtNumero.TabIndex = 13;
-            this.txtNumero.ValidatingType = typeof(int);
+            this.txtNumeroCalle.Location = new System.Drawing.Point(689, 28);
+            this.txtNumeroCalle.Mask = "9999999";
+            this.txtNumeroCalle.Name = "txtNumeroCalle";
+            this.txtNumeroCalle.Size = new System.Drawing.Size(69, 23);
+            this.txtNumeroCalle.TabIndex = 13;
+            this.txtNumeroCalle.ValidatingType = typeof(int);
             // 
             // cmbBarrio
             // 
@@ -207,11 +213,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.dgvClientes);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 144);
+            this.groupBox2.Location = new System.Drawing.Point(12, 182);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(764, 386);
+            this.groupBox2.Size = new System.Drawing.Size(764, 348);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clientes";
@@ -232,11 +238,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.label8.TabIndex = 1;
             this.label8.Text = "Buscar";
             // 
-            // dataGridView1
+            // dgvClientes
             // 
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cuit,
             this.razon_social,
             this.calle,
@@ -244,14 +251,15 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.fecha_alta,
             this.id_barrio,
             this.id_contacto});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 65);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(752, 315);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvClientes.Location = new System.Drawing.Point(6, 65);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.Size = new System.Drawing.Size(752, 277);
+            this.dgvClientes.TabIndex = 0;
             // 
             // cuit
             // 
+            this.cuit.DataPropertyName = "cuit";
             this.cuit.HeaderText = "Cuit";
             this.cuit.Name = "cuit";
             this.cuit.ReadOnly = true;
@@ -259,6 +267,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // razon_social
             // 
+            this.razon_social.DataPropertyName = "razon_social";
             this.razon_social.HeaderText = "Razón social";
             this.razon_social.Name = "razon_social";
             this.razon_social.ReadOnly = true;
@@ -266,6 +275,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // calle
             // 
+            this.calle.DataPropertyName = "calle";
             this.calle.HeaderText = "Calle";
             this.calle.Name = "calle";
             this.calle.ReadOnly = true;
@@ -273,6 +283,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // numero
             // 
+            this.numero.DataPropertyName = "numero";
             this.numero.HeaderText = "N°";
             this.numero.Name = "numero";
             this.numero.ReadOnly = true;
@@ -280,12 +291,14 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // fecha_alta
             // 
+            this.fecha_alta.DataPropertyName = "fecha_alta";
             this.fecha_alta.HeaderText = "Fecha alta";
             this.fecha_alta.Name = "fecha_alta";
             this.fecha_alta.ReadOnly = true;
             // 
             // id_barrio
             // 
+            this.id_barrio.DataPropertyName = "barrio";
             this.id_barrio.HeaderText = "Barrio";
             this.id_barrio.Name = "id_barrio";
             this.id_barrio.ReadOnly = true;
@@ -293,10 +306,42 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // id_contacto
             // 
+            this.id_contacto.DataPropertyName = "id_contacto";
             this.id_contacto.HeaderText = "Contacto";
             this.id_contacto.Name = "id_contacto";
             this.id_contacto.ReadOnly = true;
             this.id_contacto.Width = 120;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(562, 108);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(95, 39);
+            this.btnEliminar.TabIndex = 14;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Location = new System.Drawing.Point(663, 108);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(95, 39);
+            this.btnEditar.TabIndex = 15;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(461, 108);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(95, 39);
+            this.btnAgregar.TabIndex = 16;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // frmCliente
             // 
@@ -314,7 +359,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -337,8 +382,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.MaskedTextBox txtNumero;
+        private System.Windows.Forms.DataGridView dgvClientes;
+        private System.Windows.Forms.MaskedTextBox txtNumeroCalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn razon_social;
         private System.Windows.Forms.DataGridViewTextBoxColumn calle;
@@ -346,5 +391,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_alta;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_barrio;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_contacto;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

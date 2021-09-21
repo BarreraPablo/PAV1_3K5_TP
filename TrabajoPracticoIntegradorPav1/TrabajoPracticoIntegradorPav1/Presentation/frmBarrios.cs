@@ -64,8 +64,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             {
                 cn.Close();
             }
-
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
