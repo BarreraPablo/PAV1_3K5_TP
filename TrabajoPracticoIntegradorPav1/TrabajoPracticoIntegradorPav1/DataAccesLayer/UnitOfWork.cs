@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
 {
-    class UnitOfWork
+    public class UnitOfWork
     {
         private IDbTransaction transaction;
         private IDbConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["conexionDB"]);
@@ -23,6 +23,19 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
                 return neighborhoodDao;
             } 
         }
+
+        private ProductDao productDao;
+
+        public ProductDao ProductDao
+        {
+            get {
+                if (productDao == null)
+                    productDao = new ProductDao(connection, transaction);
+                return productDao; 
+            }
+
+        }
+
 
         public void Open()
         {

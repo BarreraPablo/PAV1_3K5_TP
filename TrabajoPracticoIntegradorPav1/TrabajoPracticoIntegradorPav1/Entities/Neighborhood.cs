@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace TrabajoPracticoIntegradorPav1.Entities
 {
-    public class Neighborhood
+    public class Neighborhood : ISimpleEntity
     {
 
-        public int id_barrio { get; set; }
+        public int id { get; set; }
         public string nombre { get; set; }
         public int borrado { get; set; }
 
-        public Neighborhood(int id_barrio, string nombre, int borrado)
+        public Neighborhood(int id, string nombre, int borrado)
         {
-            this.id_barrio = id_barrio;
+            this.id = id;
             this.nombre = nombre;
             this.borrado = borrado;
         }
         public Neighborhood()
         {
-            
+
         }
     }
 }

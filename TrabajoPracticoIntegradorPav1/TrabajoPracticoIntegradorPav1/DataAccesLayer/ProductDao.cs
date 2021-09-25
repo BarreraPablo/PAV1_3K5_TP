@@ -9,12 +9,12 @@ using TrabajoPracticoIntegradorPav1.Entities;
 
 namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
 {
-    public class NeighborhoodDao : IGeneralDao<Neighborhood>
+    public class ProductDao : IGeneralDao<Product>
     {
         private readonly IDbConnection connection;
         private readonly IDbTransaction transaction;
 
-        public NeighborhoodDao(IDbConnection connection, IDbTransaction transaction)
+        public ProductDao(IDbConnection connection, IDbTransaction transaction)
         {
             this.connection = connection;
             this.transaction = transaction;
@@ -25,7 +25,7 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
             SqlCommand cmd = (SqlCommand)connection.CreateCommand();
 
 
-            string consulta = "INSERT INTO Barrios (nombre) VALUES (@nombre)";
+            string consulta = "INSERT INTO Productos (nombre) VALUES (@nombre)";
 
             cmd.Parameters.Clear();
             cmd.CommandType = CommandType.Text;
@@ -35,7 +35,6 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
             cmd.Transaction = (SqlTransaction)transaction;
 
             cmd.ExecuteNonQuery();
-
         }
 
         public void Delete(int id)
@@ -43,7 +42,7 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
             SqlCommand cmd = (SqlCommand)connection.CreateCommand();
 
 
-            string consulta = "UPDATE Barrios SET borrado = 1 WHERE id_barrio = @id ";
+            string consulta = "UPDATE Barrios SET borrado = 1 WHERE id_producto = @id ";
 
             cmd.Parameters.Clear();
             cmd.CommandType = CommandType.Text;
@@ -54,12 +53,12 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
             cmd.ExecuteNonQuery();
         }
 
-        public List<Neighborhood> GetAll()
+        public List<Product> GetAll()
         {
             SqlCommand cmd = (SqlCommand)connection.CreateCommand();
-            var neighborhoods = new List<Neighborhood>();
+            var products = new List<Product>();
 
-            string consulta = "SELECT nombre, id_barrio FROM Barrios WHERE borrado is NULL or borrado = 0";
+            string consulta = "SELECT nombre, id_producto FROM Productos WHERE borrado is NULL or borrado = 0";
 
             cmd.Parameters.Clear();
             cmd.CommandType = CommandType.Text;
@@ -69,25 +68,24 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
 
             while (dr.Read())
             {
-                neighborhoods.Add(
-                    new Neighborhood()
+                products.Add(
+                    new Product()
                     {
                         nombre = dr["nombre"].ToString(),
-                        id = int.Parse(dr["id_barrio"].ToString())
+                        id = int.Parse(dr["id_producto"].ToString())
                     });
             }
 
-            return neighborhoods;
+            return products;
         }
 
-        //metodo para obtener un resultado de la base de datos, en este caso como ejemplo obtenemos un barrio
-        public List<Neighborhood> GetByName(string nombre)
+        public List<Product> GetByName(string nombre)
         {
-            var neighborhoods = new List<Neighborhood>();
+            var products = new List<Product>();
             SqlCommand cmd = (SqlCommand)connection.CreateCommand();
 
 
-            string consulta = "SELECT * FROM Barrios WHERE nombre LIKE '%'+@nombre+'%' and (borrado is NULL or borrado = 0)";
+            string consulta = "SELECT * FROM Productos WHERE nombre LIKE '%'+@nombre+'%' and (borrado is NULL OR borrado = 0)";
 
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@nombre", nombre);
@@ -99,22 +97,22 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
 
             while (dr.Read())
             {
-                neighborhoods.Add(
-                    new Neighborhood()
+                products.Add(
+                    new Product()
                     {
                         nombre = dr["nombre"].ToString(),
-                        id = int.Parse(dr["id_barrio"].ToString())
+                        id = int.Parse(dr["id_producto"].ToString())
                     });
             }
 
-            return neighborhoods;
+            return products;
         }
 
         public void Update(string nombre, string id)
         {
             SqlCommand cmd = (SqlCommand)connection.CreateCommand();
 
-            string consulta = "UPDATE Barrios SET nombre = @nombre WHERE id_barrio = @id";
+            string consulta = "UPDATE Productos SET nombre = @nombre WHERE id_producto = @id";
 
             cmd.Parameters.Clear();
             cmd.CommandType = CommandType.Text;
@@ -124,7 +122,6 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
             cmd.Transaction = (SqlTransaction)transaction;
 
             cmd.ExecuteNonQuery();
-
         }
     }
 }

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrabajoPracticoIntegradorPav1.Business;
+using TrabajoPracticoIntegradorPav1.DataAccesLayer;
+using TrabajoPracticoIntegradorPav1.Entities;
 using TrabajoPracticoIntegradorPav1.Presentation;
 
 namespace TrabajoPracticoIntegradorPav1.Presentacion
@@ -65,9 +68,10 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         private void btnBarrios_Click(object sender, EventArgs e)
         {
-            frmBarrios form = new frmBarrios();
+            var form = new frmSimple<NeighborhoodService, Neighborhood>("barrios");
             AddForm(form);
         }
+
 
         private void btnContactos_Click(object sender, EventArgs e)
         {
@@ -78,6 +82,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         private void btnClientes_Click(object sender, EventArgs e)
         {
             frmCliente form = new frmCliente();
+            AddForm(form);
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            var form = new frmSimple<ProductService, Product>("productos");
             AddForm(form);
         }
     }

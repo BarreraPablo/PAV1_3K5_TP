@@ -47,17 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\ISimpleService.cs" />
+    <Compile Include="Business\NeighborhoodService.cs" />
+    <Compile Include="Business\ProductService.cs" />
+    <Compile Include="DataAccesLayer\IGeneralDao.cs" />
     <Compile Include="DataAccesLayer\NeighborhoodDao.cs" />
+    <Compile Include="DataAccesLayer\ProductDao.cs" />
     <Compile Include="DataAccesLayer\UnitOfWork.cs" />
     <Compile Include="DataAccesLayer\ValidateUser.cs" />
     <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\ISimpleEntity.cs" />
     <Compile Include="Entities\Neighborhood.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\SimpleEntityHelper.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Presentation\frmBarrios.cs">
+    <Compile Include="Presentation\frmSimple.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\frmBarrios.Designer.cs">
-      <DependentUpon>frmBarrios.cs</DependentUpon>
+    <Compile Include="Presentation\frmSimple.Designer.cs">
+      <DependentUpon>frmSimple.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\frmCliente.cs">
       <SubType>Form</SubType>
@@ -85,8 +93,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Presentation\frmBarrios.resx">
-      <DependentUpon>frmBarrios.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\frmSimple.resx">
+      <DependentUpon>frmSimple.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>

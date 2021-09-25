@@ -11,17 +11,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrabajoPracticoIntegradorPav1.Entities;
 using TrabajoPracticoIntegradorPav1.DataAccesLayer;
+using TrabajoPracticoIntegradorPav1.Business;
 
 namespace TrabajoPracticoIntegradorPav1.Presentacion
 {
-    public partial class frmBarrios : Form
-    {
-        private UnitOfWork unitOfWork;
 
-        public frmBarrios()
+    public partial class frmSimple<T, X> : Form where T : class, ISimpleService<X>, new()
+    {
+        private ISimpleService<X> simpleService;
+
+        public frmSimple(string titlesNames)
         {
             InitializeComponent();
-            unitOfWork = new UnitOfWork();
+            simpleService = new T();
+
+            setTitles(titlesNames);
+        }
+
+        private void setTitles(string titlesNames)
+        {
+            lblTitulo.Text = $"Alta de {titlesNames}";
+            gbSearch.Text = $"Todos los {titlesNames}";
         }
 
         private void frmBarrios_Load(object sender, EventArgs e)
@@ -35,11 +45,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         //Metodo para cargar los barrios en la grilla
         private void CargarGrilla()
         {
-            unitOfWork.Open();
-            var neighborhoods = unitOfWork.NeighborhoodDao.GetAll();
-            unitOfWork.Close();
+            var entities = simpleService.GetAll();
 
-            dgvBarrios.DataSource = neighborhoods;  
+            dgvBarrios.DataSource = entities;  
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -60,9 +68,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
                 else
                 {
                     //Si pasamos la validacion...
-                    unitOfWork.Open();
-                    unitOfWork.NeighborhoodDao.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreBarrio.Text));
-                    unitOfWork.Close();
+                    simpleService.Add(txtNombreBarrio.Text);
 
                     MessageBox.Show("Barrio agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrilla();
@@ -84,16 +90,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         {
             try
             {
-                int i = e.RowIndex;
-                DataGridViewRow selectedRow = dgvBarrios.Rows[i];
-                string name = selectedRow.Cells["nombre"].Value.ToString();
+                ISimpleEntity entitySelected = (ISimpleEntity)dgvBarrios.SelectedRows[0].DataBoundItem;
 
-                //Pasamos por parametro el nombre del registro que obtuvimos al hacerle click para obtener el barrio
-                unitOfWork.Open();
-                Neighborhood b = unitOfWork.NeighborhoodDao.GetByName(name).First();
-                unitOfWork.Close();
-                //Cargamos el texbox con el nombre del barrio que obtuvimos del metodo anterior 
-                LoadFiel(b);
+                LoadFiel(entitySelected);
             }
             catch (Exception)
             {
@@ -103,10 +102,10 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         }
         
         //Metodo para cargar el texbox de barrio
-        private void LoadFiel(Neighborhood b)
+        private void LoadFiel(ISimpleEntity b)
         {
             txtNombreBarrio.Text = b.nombre;
-            txtIdBarrio.Text = b.id_barrio.ToString();
+            txtIdBarrio.Text = b.id.ToString();
             btnEliminar.Enabled = true;
             btnEditar.Enabled = true;
             btnAgregar.Enabled = false;
@@ -120,9 +119,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             {
                 try
                 {
-                    unitOfWork.Open();
-                    unitOfWork.NeighborhoodDao.Delete(txtNombreBarrio.Text);
-                    unitOfWork.Close();
+                    ISimpleEntity entitySelected = (ISimpleEntity)dgvBarrios.SelectedRows[0].DataBoundItem;
+                    simpleService.Delete(entitySelected.id);
 
                     MessageBox.Show("Barrio eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrilla();
@@ -152,9 +150,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             try
             {
                 //Neighborhood b = GetNeighborhood.Get(txtNombreBarrio.Text);
-                unitOfWork.Open();
-                unitOfWork.NeighborhoodDao.Update(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreBarrio.Text), txtIdBarrio.Text);
-                unitOfWork.Close();
+                simpleService.Update(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreBarrio.Text), txtIdBarrio.Text);
 
                 MessageBox.Show("Barrio editado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrilla();
@@ -179,14 +175,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
             try
             {
-                unitOfWork.Open();
-                dgvBarrios.DataSource = unitOfWork.NeighborhoodDao.GetByName(txtBuscar.Text);
-                unitOfWork.Close();
+               dgvBarrios.DataSource = simpleService.GetByName(txtBuscar.Text);
             }
             catch (Exception)
             {
 
-                throw;
             }
         }
     }

@@ -38,7 +38,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.btnReporteCliente = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.panelSubMenuGestion = new System.Windows.Forms.Panel();
-            this.btnProyectos = new System.Windows.Forms.Button();
+            this.btnProductos = new System.Windows.Forms.Button();
             this.btnContactos = new System.Windows.Forms.Button();
             this.btnBarrios = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
@@ -177,7 +177,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             // panelSubMenuGestion
             // 
             this.panelSubMenuGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelSubMenuGestion.Controls.Add(this.btnProyectos);
+            this.panelSubMenuGestion.Controls.Add(this.btnProductos);
             this.panelSubMenuGestion.Controls.Add(this.btnContactos);
             this.panelSubMenuGestion.Controls.Add(this.btnBarrios);
             this.panelSubMenuGestion.Controls.Add(this.btnClientes);
@@ -187,21 +187,22 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.panelSubMenuGestion.Size = new System.Drawing.Size(228, 143);
             this.panelSubMenuGestion.TabIndex = 2;
             // 
-            // btnProyectos
+            // btnProductos
             // 
-            this.btnProyectos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProyectos.FlatAppearance.BorderSize = 0;
-            this.btnProyectos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProyectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProyectos.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnProyectos.Location = new System.Drawing.Point(0, 105);
-            this.btnProyectos.Name = "btnProyectos";
-            this.btnProyectos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnProyectos.Size = new System.Drawing.Size(228, 34);
-            this.btnProyectos.TabIndex = 3;
-            this.btnProyectos.Text = "Proyectos";
-            this.btnProyectos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProyectos.UseVisualStyleBackColor = true;
+            this.btnProductos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProductos.FlatAppearance.BorderSize = 0;
+            this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductos.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnProductos.Location = new System.Drawing.Point(0, 105);
+            this.btnProductos.Name = "btnProductos";
+            this.btnProductos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnProductos.Size = new System.Drawing.Size(228, 34);
+            this.btnProductos.TabIndex = 3;
+            this.btnProductos.Text = "Productos";
+            this.btnProductos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductos.UseVisualStyleBackColor = true;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // btnContactos
             // 
@@ -329,7 +330,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnGestionar;
         private System.Windows.Forms.Panel panelLogo;
-        private System.Windows.Forms.Button btnProyectos;
+        private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.Button btnContactos;
         private System.Windows.Forms.Button btnBarrios;
         private System.Windows.Forms.Panel panelSubMenuReportes;

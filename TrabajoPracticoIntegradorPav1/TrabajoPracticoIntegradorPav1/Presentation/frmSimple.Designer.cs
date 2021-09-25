@@ -1,7 +1,11 @@
 ﻿
+using TrabajoPracticoIntegradorPav1.Business;
+using TrabajoPracticoIntegradorPav1.DataAccesLayer;
+using TrabajoPracticoIntegradorPav1.Entities;
+
 namespace TrabajoPracticoIntegradorPav1.Presentacion
 {
-    partial class frmBarrios
+    partial class frmSimple<T, X> where T : class, ISimpleService<X>, new()
     {
         /// <summary>
         /// Required designer variable.
@@ -29,37 +33,37 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbSearch = new System.Windows.Forms.GroupBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvBarrios = new System.Windows.Forms.DataGridView();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombreBarrio = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtIdBarrio = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtIdBarrio = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
+            this.gbSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBarrios)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gbSearch
             // 
-            this.groupBox1.Controls.Add(this.txtBuscar);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.dgvBarrios);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 50);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(456, 481);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Todos los barrios";
+            this.gbSearch.Controls.Add(this.txtBuscar);
+            this.gbSearch.Controls.Add(this.label3);
+            this.gbSearch.Controls.Add(this.dgvBarrios);
+            this.gbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbSearch.Location = new System.Drawing.Point(12, 50);
+            this.gbSearch.Name = "gbSearch";
+            this.gbSearch.Size = new System.Drawing.Size(456, 481);
+            this.gbSearch.TabIndex = 0;
+            this.gbSearch.TabStop = false;
+            this.gbSearch.Text = "Todos los ";
             // 
             // txtBuscar
             // 
@@ -100,16 +104,16 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.nombre.ReadOnly = true;
             this.nombre.Width = 400;
             // 
-            // label1
+            // lblTitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 31);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Alta de barrios";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblTitulo.Location = new System.Drawing.Point(12, 12);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(113, 31);
+            this.lblTitulo.TabIndex = 1;
+            this.lblTitulo.Text = "Alta de ";
             // 
             // label2
             // 
@@ -145,6 +149,24 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
+            // txtIdBarrio
+            // 
+            this.txtIdBarrio.Location = new System.Drawing.Point(76, 44);
+            this.txtIdBarrio.Multiline = true;
+            this.txtIdBarrio.Name = "txtIdBarrio";
+            this.txtIdBarrio.Size = new System.Drawing.Size(38, 23);
+            this.txtIdBarrio.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(49, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Id";
+            // 
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -178,39 +200,21 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(49, 47);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(21, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Id";
-            // 
-            // txtIdBarrio
-            // 
-            this.txtIdBarrio.Location = new System.Drawing.Point(76, 44);
-            this.txtIdBarrio.Multiline = true;
-            this.txtIdBarrio.Name = "txtIdBarrio";
-            this.txtIdBarrio.Size = new System.Drawing.Size(38, 23);
-            this.txtIdBarrio.TabIndex = 8;
-            // 
-            // frmBarrios
+            // frmSimple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(788, 542);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.gbSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmBarrios";
+            this.Name = "frmSimple";
             this.Text = "frmBarrios";
             this.Load += new System.EventHandler(this.frmBarrios_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbSearch.ResumeLayout(false);
+            this.gbSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBarrios)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -221,9 +225,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbSearch;
         private System.Windows.Forms.DataGridView dgvBarrios;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombreBarrio;
         private System.Windows.Forms.GroupBox groupBox2;
