@@ -9,16 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmNeighborhood;
 using TrabajoPracticoIntegradorPav1.Entities;
+using TrabajoPracticoIntegradorPav1.DataAccesLayer;
 
 namespace TrabajoPracticoIntegradorPav1.Presentacion
 {
     public partial class frmBarrios : Form
     {
+        private UnitOfWork unitOfWork;
+
         public frmBarrios()
         {
             InitializeComponent();
+            unitOfWork = new UnitOfWork();
         }
 
         private void frmBarrios_Load(object sender, EventArgs e)
@@ -32,38 +35,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         //Metodo para cargar los barrios en la grilla
         private void CargarGrilla()
         {
+            unitOfWork.Open();
+            var neighborhoods = unitOfWork.NeighborhoodDao.GetAll();
+            unitOfWork.Close();
 
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["conexionDB"];
-            SqlCommand cmd = new SqlCommand();
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-
-            try
-            {
-                
-                    string consulta = "SELECT nombre FROM Barrios WHERE borrado is NULL";
-
-                    cmd.Parameters.Clear();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = consulta;
-
-                    cn.Open();
-                    cmd.Connection = cn;
-
-                    DataTable table = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    da.Fill(table);
-
-                    dgvBarrios.DataSource = table;  
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            dgvBarrios.DataSource = neighborhoods;  
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -84,17 +60,18 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
                 else
                 {
                     //Si pasamos la validacion...
-                    bool result = AddNeighborhood.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreBarrio.Text));
-                    if (result)
-                    {
-                        MessageBox.Show("Barrio agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        CargarGrilla();
-                        txtNombreBarrio.Text = "";
-                        txtIdBarrio.Text = "";
-                        txtNombreBarrio.Focus();
-                    }
+                    unitOfWork.Open();
+                    unitOfWork.NeighborhoodDao.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreBarrio.Text));
+                    unitOfWork.Close();
+
+                    MessageBox.Show("Barrio agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrilla();
+                    txtNombreBarrio.Text = "";
+                    txtIdBarrio.Text = "";
+                    txtNombreBarrio.Focus();
+
                 }
-                
+
             }
             catch (Exception)
             {
@@ -112,7 +89,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
                 string name = selectedRow.Cells["nombre"].Value.ToString();
 
                 //Pasamos por parametro el nombre del registro que obtuvimos al hacerle click para obtener el barrio
-                Neighborhood b = GetNeighborhood.Get(name);
+                unitOfWork.Open();
+                Neighborhood b = unitOfWork.NeighborhoodDao.GetByName(name).First();
+                unitOfWork.Close();
                 //Cargamos el texbox con el nombre del barrio que obtuvimos del metodo anterior 
                 LoadFiel(b);
             }
@@ -141,23 +120,20 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             {
                 try
                 {
-                    bool result = DeleteNeighborhood.Delete(txtNombreBarrio.Text);
-                    if (result)
-                    {
-                        MessageBox.Show("Barrio eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        CargarGrilla();
-                        txtNombreBarrio.Text = "";
-                        txtIdBarrio.Text = "";
-                        btnAgregar.Enabled = true;
-                        btnEliminar.Enabled = false;
-                        btnEditar.Enabled = false;
-                        txtNombreBarrio.Enabled = true;
-                        txtNombreBarrio.Focus();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error, no se pudo eliminar el barrio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    unitOfWork.Open();
+                    unitOfWork.NeighborhoodDao.Delete(txtNombreBarrio.Text);
+                    unitOfWork.Close();
+
+                    MessageBox.Show("Barrio eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrilla();
+                    txtNombreBarrio.Text = "";
+                    txtIdBarrio.Text = "";
+                    btnAgregar.Enabled = true;
+                    btnEliminar.Enabled = false;
+                    btnEditar.Enabled = false;
+                    txtNombreBarrio.Enabled = true;
+                    txtNombreBarrio.Focus();
+
                 }
                 catch (Exception)
                 {
@@ -176,24 +152,20 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             try
             {
                 //Neighborhood b = GetNeighborhood.Get(txtNombreBarrio.Text);
+                unitOfWork.Open();
+                unitOfWork.NeighborhoodDao.Update(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreBarrio.Text), txtIdBarrio.Text);
+                unitOfWork.Close();
 
-                bool result = UpdateNeighborhood.Update(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreBarrio.Text), txtIdBarrio.Text);
-                if (result)
-                {
-                    MessageBox.Show("Barrio editado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarGrilla();
-                    txtNombreBarrio.Text = "";
-                    txtIdBarrio.Text = "";
-                    btnAgregar.Enabled = true;
-                    btnEliminar.Enabled = false;
-                    btnEditar.Enabled = false;
-                    txtNombreBarrio.Enabled = true;
-                    txtNombreBarrio.Focus();
-                }
-                else
-                {
-                    MessageBox.Show("Error, no se pudo editar el barrio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Barrio editado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarGrilla();
+                txtNombreBarrio.Text = "";
+                txtIdBarrio.Text = "";
+                btnAgregar.Enabled = true;
+                btnEliminar.Enabled = false;
+                btnEditar.Enabled = false;
+                txtNombreBarrio.Enabled = true;
+                txtNombreBarrio.Focus();
+
             }
             catch (Exception)
             {
@@ -203,36 +175,18 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         private void btnBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["conexionDB"];
-            SqlCommand cmd = new SqlCommand();
-            SqlConnection cn = new SqlConnection(cadenaConexion);
+
 
             try
             {
-
-                string consulta = "SELECT nombre FROM Barrios WHERE nombre LIKE '" +txtBuscar.Text+ "%' AND borrado IS NULL";
-
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-
-                DataTable table = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(table);
-
-                dgvBarrios.DataSource = table;
+                unitOfWork.Open();
+                dgvBarrios.DataSource = unitOfWork.NeighborhoodDao.GetByName(txtBuscar.Text);
+                unitOfWork.Close();
             }
             catch (Exception)
             {
 
                 throw;
-            }
-            finally
-            {
-                cn.Close();
             }
         }
     }

@@ -47,11 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccesLayer\AbmClient\AddClient.cs" />
-    <Compile Include="DataAccesLayer\AbmNeighborhood\AddNeighborhood.cs" />
-    <Compile Include="DataAccesLayer\AbmNeighborhood\DeleteNeighborhood.cs" />
-    <Compile Include="DataAccesLayer\AbmNeighborhood\GetNeighborhood.cs" />
-    <Compile Include="DataAccesLayer\AbmNeighborhood\UpdateNeighborhood.cs" />
+    <Compile Include="DataAccesLayer\NeighborhoodDao.cs" />
+    <Compile Include="DataAccesLayer\UnitOfWork.cs" />
     <Compile Include="DataAccesLayer\ValidateUser.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\Neighborhood.cs" />
@@ -138,6 +135,8 @@
   <ItemGroup>
     <None Include="Resources\8156567_network_connect_electricity_system_energy_icon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataAccesLayer\AbmClient\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

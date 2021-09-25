@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient;
+//using TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient;
 using TrabajoPracticoIntegradorPav1.Entities;
 
 namespace TrabajoPracticoIntegradorPav1.Presentation
@@ -121,16 +121,16 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
             try
             {
-                bool result = AddClient.Add(c);
-                if (result)
-                {
-                    MessageBox.Show("Cliente agregado");
-                    CargarGrilla();
-                }
-                else
-                {
-                    MessageBox.Show("Ocurrio un error inesperado al intentas cargar el cliente");
-                }
+                //bool result = AddClient.Add(c);
+                //if (result)
+                //{
+                //    MessageBox.Show("Cliente agregado");
+                //    CargarGrilla();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Ocurrio un error inesperado al intentas cargar el cliente");
+                //}
             }
             catch (Exception ex)
             {
