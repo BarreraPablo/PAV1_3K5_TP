@@ -50,6 +50,7 @@
     <Compile Include="Business\ISimpleService.cs" />
     <Compile Include="Business\NeighborhoodService.cs" />
     <Compile Include="Business\ProductService.cs" />
+    <Compile Include="DataAccesLayer\AbmClient\AddClient.cs" />
     <Compile Include="DataAccesLayer\IGeneralDao.cs" />
     <Compile Include="DataAccesLayer\NeighborhoodDao.cs" />
     <Compile Include="DataAccesLayer\ProductDao.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Entities\ISimpleEntity.cs" />
     <Compile Include="Entities\Neighborhood.cs" />
     <Compile Include="Entities\Product.cs" />
-    <Compile Include="Entities\SimpleEntityHelper.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Presentation\frmSimple.cs">
       <SubType>Form</SubType>
@@ -143,8 +143,6 @@
   <ItemGroup>
     <None Include="Resources\8156567_network_connect_electricity_system_energy_icon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataAccesLayer\AbmClient\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

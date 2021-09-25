@@ -9,7 +9,7 @@ namespace TrabajoPracticoIntegradorPav1.Entities
     public class Client
     {
         public int id_cliente { get; set; }
-        public int cuit { get; set; }
+        public long cuit { get; set; }
         public string razon_social { get; set; }
         public int borrado { get; set; }
         public string calle { get; set; }
@@ -18,7 +18,7 @@ namespace TrabajoPracticoIntegradorPav1.Entities
         public int id_barrio { get; set; }
         public int id_contacto { get; set; }
 
-        public Client(int id_cliente, int cuit, string razon_social, int borrado, string calle, int numero, DateTime fecha_alta, int id_barrio, int id_contacto)
+        public Client(int id_cliente, long cuit, string razon_social, int borrado, string calle, int numero, DateTime fecha_alta, int id_barrio, int id_contacto)
         {
             this.id_cliente = id_cliente;
             this.cuit = cuit;
