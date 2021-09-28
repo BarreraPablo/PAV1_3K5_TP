@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using TrabajoPracticoIntegradorPav1.Entities;
 using TrabajoPracticoIntegradorPav1.DataAccesLayer;
 using TrabajoPracticoIntegradorPav1.Business;
+using TrabajoPracticoIntegradorPav1.Exceptions;
 
 namespace TrabajoPracticoIntegradorPav1.Presentacion
 {
@@ -19,19 +20,19 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
     public partial class frmSimple<T, X> : Form where T : class, ISimpleService<X>, new()
     {
         private ISimpleService<X> simpleService;
-
-        public frmSimple(string titlesNames)
+        private string name;
+        public frmSimple(string titleName)
         {
             InitializeComponent();
             simpleService = new T();
-
-            setTitles(titlesNames);
+            name = titleName;
+            setTitles();
         }
 
-        private void setTitles(string titlesNames)
+        private void setTitles()
         {
-            lblTitulo.Text = $"Alta de {titlesNames}";
-            gbSearch.Text = $"Todos los {titlesNames}";
+            lblTitulo.Text = $"Alta de {name + 's'}";
+            gbSearch.Text = $"Todos los {name + 's'}";
         }
 
         private void frmBarrios_Load(object sender, EventArgs e)
@@ -57,12 +58,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
                 //Validamos que el campo barrio no este vacio
                 if (txtNombreBarrio.Text.Equals(""))
                 {
-                    MessageBox.Show("El nombre del barrio es obligatorio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                    MessageBox.Show($"El nombre del {name} es obligatorio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
                     txtNombreBarrio.Focus();
                     return;
                 }else if(txtNombreBarrio.Text.Length > 50)
                 {
-                    MessageBox.Show("El barrio que intenta ingresar no puede tener mas de 50 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"El {name} que intenta ingresar no puede tener mas de 50 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
@@ -70,7 +71,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
                     //Si pasamos la validacion...
                     simpleService.Add(txtNombreBarrio.Text);
 
-                    MessageBox.Show("Barrio agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"{char.ToUpper(name[0]) + name.Substring(1)} agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrilla();
                     txtNombreBarrio.Text = "";
                     txtIdBarrio.Text = "";
@@ -78,6 +79,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
                 }
 
+            }
+
+            catch (EntityAlreadyExistsException)
+            {
+                MessageBox.Show($"El {name} ya se encuentra registrado.");
             }
             catch (Exception)
             {
@@ -114,15 +120,15 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
-            if (!txtNombreBarrio.Text.Equals(""))
+            
+            if (dgvBarrios.SelectedRows.Count == 1)
             {
                 try
                 {
                     ISimpleEntity entitySelected = (ISimpleEntity)dgvBarrios.SelectedRows[0].DataBoundItem;
                     simpleService.Delete(entitySelected.id);
 
-                    MessageBox.Show("Barrio eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"{char.ToUpper(name[0]) + name.Substring(1)} eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrilla();
                     txtNombreBarrio.Text = "";
                     txtIdBarrio.Text = "";
@@ -133,14 +139,14 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
                     txtNombreBarrio.Focus();
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error inesperado al intentar consultar la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Error, no se pudo eliminar el barrio porque usted modifico el nombre del barrio a eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Tiene que seleccionar un barrio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -152,7 +158,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
                 //Neighborhood b = GetNeighborhood.Get(txtNombreBarrio.Text);
                 simpleService.Update(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(txtNombreBarrio.Text), txtIdBarrio.Text);
 
-                MessageBox.Show("Barrio editado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"{char.ToUpper(name[0]) + name.Substring(1)} editado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrilla();
                 txtNombreBarrio.Text = "";
                 txtIdBarrio.Text = "";

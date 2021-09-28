@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrabajoPracticoIntegradorPav1.DataAccesLayer;
 using TrabajoPracticoIntegradorPav1.Entities;
+using TrabajoPracticoIntegradorPav1.Exceptions;
 
 namespace TrabajoPracticoIntegradorPav1.Business
 {
@@ -19,6 +20,11 @@ namespace TrabajoPracticoIntegradorPav1.Business
 
         public void Add(string nombre)
         {
+            var neighborhoods = GetAll();
+
+            if(neighborhoods.Any(n => n.nombre.ToLower().Trim() == nombre.ToLower().Trim()))
+                throw new EntityAlreadyExistsException();
+
             unitOfWork.Open();
             unitOfWork.NeighborhoodDao.Add(nombre);
             unitOfWork.Close();

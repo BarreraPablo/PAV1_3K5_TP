@@ -61,6 +61,7 @@
     <Compile Include="Entities\Neighborhood.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Exceptions\EntityAlreadyExistsException.cs" />
     <Compile Include="Presentation\frmSimple.cs">
       <SubType>Form</SubType>
     </Compile>

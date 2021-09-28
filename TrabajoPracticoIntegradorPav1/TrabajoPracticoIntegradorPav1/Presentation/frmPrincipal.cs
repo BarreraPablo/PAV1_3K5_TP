@@ -68,7 +68,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         private void btnBarrios_Click(object sender, EventArgs e)
         {
-            var form = new frmSimple<NeighborhoodService, Neighborhood>("barrios");
+            var form = new frmSimple<NeighborhoodService, Neighborhood>("barrio");
             AddForm(form);
         }
 
@@ -87,7 +87,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            var form = new frmSimple<ProductService, Product>("productos");
+            var form = new frmSimple<ProductService, Product>("producto");
             AddForm(form);
         }
     }

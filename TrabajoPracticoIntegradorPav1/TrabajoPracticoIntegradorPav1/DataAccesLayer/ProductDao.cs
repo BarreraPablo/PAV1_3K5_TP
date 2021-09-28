@@ -42,7 +42,7 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer
             SqlCommand cmd = (SqlCommand)connection.CreateCommand();
 
 
-            string consulta = "UPDATE Barrios SET borrado = 1 WHERE id_producto = @id ";
+            string consulta = "UPDATE Productos SET borrado = 1 WHERE id_producto = @id ";
 
             cmd.Parameters.Clear();
             cmd.CommandType = CommandType.Text;

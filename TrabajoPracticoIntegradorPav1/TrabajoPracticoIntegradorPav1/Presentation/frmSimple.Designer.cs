@@ -90,6 +90,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.dgvBarrios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre});
             this.dgvBarrios.Location = new System.Drawing.Point(7, 60);
+            this.dgvBarrios.MultiSelect = false;
             this.dgvBarrios.Name = "dgvBarrios";
             this.dgvBarrios.ReadOnly = true;
             this.dgvBarrios.Size = new System.Drawing.Size(443, 415);

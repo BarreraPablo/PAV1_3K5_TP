@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient;
 using TrabajoPracticoIntegradorPav1.Entities;
+using TrabajoPracticoIntegradorPav1.Exceptions;
 
 namespace TrabajoPracticoIntegradorPav1.Presentation
 {
