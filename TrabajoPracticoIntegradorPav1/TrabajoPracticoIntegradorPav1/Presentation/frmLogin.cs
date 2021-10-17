@@ -37,7 +37,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos");
+                    MessageBox.Show("Usuario o contraseña incorrectos", "Error" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception)

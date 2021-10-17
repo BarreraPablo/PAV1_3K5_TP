@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
             try
             {
-                string consulta = "SELECT * FROM Barrios WHERE borrado IS NULL";
+                string consulta = "SELECT * FROM Barrios WHERE borrado IS NULL or borrado = 0";
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
@@ -117,7 +118,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             c.razon_social = txtRazonSocial.Text;
             c.calle = txtCalle.Text;
             c.numero = int.Parse(txtNumeroCalle.Text);
-            c.fecha_alta = DateTime.Parse(txtFechaAlta.Text);
+            c.fecha_alta = DateTime.ParseExact(txtFechaAlta.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             c.id_barrio = (int)cmbBarrio.SelectedValue;
 
             try
