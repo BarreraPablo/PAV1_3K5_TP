@@ -46,8 +46,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(147, 225);
+            this.panel1.Size = new System.Drawing.Size(220, 346);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -56,34 +57,40 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::TrabajoPracticoIntegradorPav1.Properties.Resources._2428662_account_agenda_app_contacts_online_icon;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(147, 225);
+            this.pictureBox1.Size = new System.Drawing.Size(220, 346);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(250, 81);
+            this.txtUser.Location = new System.Drawing.Point(375, 125);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(207, 20);
+            this.txtUser.Size = new System.Drawing.Size(308, 26);
             this.txtUser.TabIndex = 1;
+            this.txtUser.Text = "administrador";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(250, 112);
+            this.txtPassword.Location = new System.Drawing.Point(375, 172);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(207, 20);
+            this.txtPassword.Size = new System.Drawing.Size(308, 26);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.Text = "12345";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(180, 82);
+            this.label1.Location = new System.Drawing.Point(270, 126);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 17);
+            this.label1.Size = new System.Drawing.Size(86, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Usuario";
             // 
@@ -91,9 +98,10 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(153, 113);
+            this.label2.Location = new System.Drawing.Point(230, 174);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 17);
+            this.label2.Size = new System.Drawing.Size(124, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Contraseña";
             // 
@@ -102,9 +110,10 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.label3.Location = new System.Drawing.Point(218, 18);
+            this.label3.Location = new System.Drawing.Point(327, 28);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 31);
+            this.label3.Size = new System.Drawing.Size(267, 46);
             this.label3.TabIndex = 5;
             this.label3.Text = "Iniciar sesión";
             // 
@@ -115,9 +124,10 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogIn.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogIn.Location = new System.Drawing.Point(250, 154);
+            this.btnLogIn.Location = new System.Drawing.Point(375, 237);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(207, 33);
+            this.btnLogIn.Size = new System.Drawing.Size(310, 51);
             this.btnLogIn.TabIndex = 6;
             this.btnLogIn.Text = "Ingresar";
             this.btnLogIn.UseVisualStyleBackColor = false;
@@ -125,9 +135,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 225);
+            this.ClientSize = new System.Drawing.Size(729, 346);
             this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -136,6 +146,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

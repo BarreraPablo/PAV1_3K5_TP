@@ -97,6 +97,18 @@
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Exceptions\EntityAlreadyExistsException.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="Presentation\frmContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmContacto.Designer.cs">
+      <DependentUpon>frmContacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmContactos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmContactos.Designer.cs">
+      <DependentUpon>frmContactos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,12 +133,6 @@
     <Compile Include="Presentation\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\frmContactos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentation\frmContactos.Designer.cs">
-      <DependentUpon>frmContactos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\frmContacto.resx">
+      <DependentUpon>frmContacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmContactos.resx">
+      <DependentUpon>frmContactos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmFactura.resx">
       <DependentUpon>frmFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,9 +164,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\frmContactos.resx">
-      <DependentUpon>frmContactos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

@@ -90,5 +90,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             var form = new frmSimple<ProductService, Product>("producto");
             AddForm(form);
         }
+
+        private void btnContactos_Click_1(object sender, EventArgs e)
+        {
+            frmContactos form = new frmContactos();
+            AddForm(form);
+        }
     }
 }
