@@ -72,11 +72,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.groupBox2.Controls.Add(this.btnVer);
             this.groupBox2.Controls.Add(this.dgvContactos);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(18, 36);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Location = new System.Drawing.Point(12, 23);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(1146, 779);
+            this.groupBox2.Size = new System.Drawing.Size(764, 506);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contactos";
@@ -85,29 +83,28 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(25, 161);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(17, 105);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 25);
+            this.label5.Size = new System.Drawing.Size(74, 17);
             this.label5.TabIndex = 27;
             this.label5.Text = "Borradas";
             // 
             // chkDadasDeBaja
             // 
             this.chkDadasDeBaja.AutoSize = true;
-            this.chkDadasDeBaja.Location = new System.Drawing.Point(216, 164);
+            this.chkDadasDeBaja.Location = new System.Drawing.Point(144, 107);
+            this.chkDadasDeBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkDadasDeBaja.Name = "chkDadasDeBaja";
-            this.chkDadasDeBaja.Size = new System.Drawing.Size(22, 21);
+            this.chkDadasDeBaja.Size = new System.Drawing.Size(15, 14);
             this.chkDadasDeBaja.TabIndex = 26;
             this.chkDadasDeBaja.UseVisualStyleBackColor = true;
             // 
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(960, 33);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBuscar.Location = new System.Drawing.Point(640, 21);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(142, 60);
+            this.btnBuscar.Size = new System.Drawing.Size(95, 39);
             this.btnBuscar.TabIndex = 25;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -117,20 +114,18 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(475, 102);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(317, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 25);
+            this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 24;
             this.label4.Text = "Telefono";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(588, 103);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTelefono.Location = new System.Drawing.Point(392, 67);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(187, 30);
+            this.txtTelefono.Size = new System.Drawing.Size(126, 23);
             this.txtTelefono.TabIndex = 23;
             // 
             // label1
@@ -138,57 +133,51 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(507, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(338, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 25);
+            this.label1.Size = new System.Drawing.Size(47, 17);
             this.label1.TabIndex = 22;
             this.label1.Text = "Email";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(588, 48);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEmail.Location = new System.Drawing.Point(392, 31);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(187, 30);
+            this.txtEmail.Size = new System.Drawing.Size(126, 23);
             this.txtEmail.TabIndex = 21;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(34, 103);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(23, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 25);
+            this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 20;
             this.label3.Text = "Apellido";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(140, 102);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtApellido.Location = new System.Drawing.Point(93, 66);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(187, 30);
+            this.txtApellido.Size = new System.Drawing.Size(126, 23);
             this.txtApellido.TabIndex = 19;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(140, 48);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNombre.Location = new System.Drawing.Point(93, 31);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(187, 30);
+            this.txtNombre.Size = new System.Drawing.Size(126, 23);
             this.txtNombre.TabIndex = 18;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(37, 49);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(25, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 25);
+            this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 17;
             this.label2.Text = "Nombre";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -196,10 +185,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(960, 329);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEditar.Location = new System.Drawing.Point(640, 214);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(142, 60);
+            this.btnEditar.Size = new System.Drawing.Size(95, 39);
             this.btnEditar.TabIndex = 15;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
@@ -208,10 +196,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(960, 103);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAgregar.Location = new System.Drawing.Point(640, 67);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(142, 71);
+            this.btnAgregar.Size = new System.Drawing.Size(95, 46);
             this.btnAgregar.TabIndex = 16;
             this.btnAgregar.Text = "Crear nuevo";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -220,10 +207,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // btnVer
             // 
             this.btnVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVer.Location = new System.Drawing.Point(960, 240);
-            this.btnVer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnVer.Location = new System.Drawing.Point(640, 156);
             this.btnVer.Name = "btnVer";
-            this.btnVer.Size = new System.Drawing.Size(142, 70);
+            this.btnVer.Size = new System.Drawing.Size(95, 45);
             this.btnVer.TabIndex = 14;
             this.btnVer.Text = "Ver contacto";
             this.btnVer.UseVisualStyleBackColor = true;
@@ -239,61 +225,59 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.Apellido,
             this.Email,
             this.Telefono});
-            this.dgvContactos.Location = new System.Drawing.Point(39, 240);
-            this.dgvContactos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvContactos.Location = new System.Drawing.Point(26, 156);
             this.dgvContactos.MultiSelect = false;
             this.dgvContactos.Name = "dgvContactos";
             this.dgvContactos.ReadOnly = true;
             this.dgvContactos.RowHeadersWidth = 62;
             this.dgvContactos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContactos.Size = new System.Drawing.Size(887, 426);
+            this.dgvContactos.Size = new System.Drawing.Size(591, 277);
             this.dgvContactos.TabIndex = 0;
             // 
             // Nombre
             // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nombre.DataPropertyName = "nombre";
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.MinimumWidth = 8;
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 150;
             // 
             // Apellido
             // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Apellido.DataPropertyName = "apellido";
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.MinimumWidth = 8;
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
-            this.Apellido.Width = 150;
             // 
             // Email
             // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Email.DataPropertyName = "email";
             this.Email.HeaderText = "Email";
             this.Email.MinimumWidth = 8;
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
-            this.Email.Width = 150;
             // 
             // Telefono
             // 
+            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Telefono.DataPropertyName = "telefono";
             this.Telefono.HeaderText = "Telefono";
             this.Telefono.MinimumWidth = 8;
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 150;
             // 
             // frmContactos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(1182, 834);
+            this.ClientSize = new System.Drawing.Size(788, 542);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmContactos";
             this.Text = "Cliente";
             this.groupBox2.ResumeLayout(false);
@@ -318,11 +302,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkDadasDeBaja;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox chkDadasDeBaja;
     }
 }
