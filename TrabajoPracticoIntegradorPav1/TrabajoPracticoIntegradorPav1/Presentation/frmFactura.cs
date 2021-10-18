@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrabajoPracticoIntegradorPav1.DataAccesLayer;
 using TrabajoPracticoIntegradorPav1.Entities;
 
 namespace TrabajoPracticoIntegradorPav1.Presentation
 {
+    public enum frmType
+    {
+        Crear,
+        Eliminar
+    }
     public partial class frmFactura : Form
     {
+        private Factura facturaActual;
         private DataTable dtDetalle;
         bool fireEvents = false;
-        public frmFactura()
+        public frmFactura(frmType modo, int? facturaId)
         {
             InitializeComponent();
             cargarCombos();
@@ -23,6 +31,45 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             fireEvents = true;
             txtPrecio.Minimum = 1;
             txtPrecio.Maximum = 15000;
+
+            if (modo == frmType.Eliminar)
+            {
+                using (var context = new tpDbContext())
+                {
+                    facturaActual = context.Facturas.Include("FacturasDetalles").Include("FacturasDetalles.Proyecto").Include("FacturasDetalles.Producto").First(f => f.id_factura == facturaId);
+                    cbCliente.SelectedValue = facturaActual.id_cliente;
+                    txtFecha.Text = facturaActual.fecha.ToString("dd/MM/yyyy");
+
+                    foreach (var detalle in facturaActual.FacturasDetalles)
+                    {
+                        var drDetalle = dtDetalle.NewRow();
+                        drDetalle["numero_orden"] = detalle.numero_orden;
+                        drDetalle["precio"] = detalle.precio;
+                        drDetalle["nombre_producto"] = detalle.Producto != null ? detalle.Producto.nombre : null;
+                        drDetalle["descripcio_proyecto"] = detalle.Proyecto != null ? detalle.Proyecto.descripcion : null;
+                        drDetalle["id_producto"] = detalle.id_producto;
+                        drDetalle["id_proyecto"] = detalle.id_proyecto;
+
+
+                        dtDetalle.Rows.Add(drDetalle);
+
+                    }
+
+                    cbCliente.Enabled = false;
+                    txtFecha.Enabled = false;
+
+                    cbProducto.Enabled = false;
+                    cbProyecto.Enabled = false;
+
+                    txtPrecio.Enabled = false;
+
+                    btnAgregar.Enabled = false;
+                    btnEliminar.Enabled = false;
+
+                    btnBaja.Visible = true;
+                    btnFacturar.Visible = false;
+                }
+            }
         }
 
         private void inicializarTabla()
@@ -137,8 +184,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             var detalleFacturas = new List<FacturasDetalle>();
             factura.id_cliente = int.Parse(cbCliente.SelectedValue.ToString());
             factura.numero_factura = new Random().Next(5, 6000).ToString();
-            factura.fecha = dtpFecha.Value;
-            factura.id_usuario_creador = 1;
+            factura.fecha = DateTime.ParseExact(txtFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            factura.id_usuario_creador = ValidateUser.UsuarioLogeado.id_usuario;
             factura.borrado = false;
             factura.FacturasDetalles = detalleFacturas;
 
@@ -178,7 +225,16 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 return false;
             }
 
-            if(dtpFecha.Value < (DateTime)DateTime.Now.AddDays(-10))
+            DateTime fecha = new DateTime();
+            var hayFechaValida = DateTime.TryParseExact(txtFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha);
+
+            if (!hayFechaValida)
+            {
+                MessageBox.Show("Ingrese una fecha valida, formato dd/mm/aaaa", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(fecha < DateTime.Now.AddDays(-10))
             {
                 MessageBox.Show("La fecha de la factura no puede ser menor a 10 dias", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -197,6 +253,22 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         {
             if(fireEvents)
                 cbProyecto.Enabled = false;
+        }
+
+        private void btnBaja_Click(object sender, EventArgs e)
+        {
+            using (var context = new tpDbContext())
+            {
+                context.Facturas.Attach(facturaActual);
+
+                facturaActual.borrado = true;
+
+                context.SaveChanges();
+            }
+
+            MessageBox.Show("La factura a sido borrada con exito", "Atencion", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

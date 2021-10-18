@@ -21,13 +21,14 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         {
             InitializeComponent();
             cargarGrilla();
+            cargarCombos();
         }
 
         private void cargarGrilla()
         {
             using (var context = new tpDbContext())
             {
-                IQueryable<Factura> facturas = context.Facturas.Include("Cliente");
+                IQueryable<Factura> facturas = context.Facturas.Include("Cliente").Include("FacturasDetalle");
                 DateTime fecha = new DateTime();
                 var hayFechaValida = DateTime.TryParseExact(txtFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha);
 
@@ -51,38 +52,76 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                     facturas = facturas.Where(f => f.id_usuario_creador == (int)cboUsuarioCreador.SelectedValue);
                 }
 
-                var facturasResultado = facturas.GroupBy(c => new { c.numero_factura, c.Cliente.razon_social, c.fecha, c.Cliente.cuit, c.Usuario.usuario1 })
+                facturas = facturas.Where(f => f.borrado == chkDadasDeBaja.Checked);
+
+                var facturasResultado = facturas.GroupBy(c => new { c.id_factura, c.numero_factura, c.Cliente.razon_social, c.fecha, c.Cliente.cuit, c.Usuario.usuario1 })
                     .Select(f => new
                     {
-                        numero_factura = f.Key.numero_factura,
-                        razon_social = f.Key.razon_social,
-                        fecha = f.Key.fecha,
-                        cuit = f.Key.cuit,
+                        f.Key.id_factura,
+                        f.Key.numero_factura,
+                        f.Key.razon_social,
+                        f.Key.fecha,
+                        f.Key.cuit,
                         usuario = f.Key.usuario1,
                         total = f.Sum(c => c.FacturasDetalles.Select(r => r.precio).Sum())
                     }).ToList();
 
-                dgvClientes.AutoGenerateColumns = false;
+                dgvFacturas.AutoGenerateColumns = false;
                 context.Configuration.LazyLoadingEnabled = false;
 
-                dgvClientes.DataSource = facturasResultado;
+                dgvFacturas.DataSource = facturasResultado;
             }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmFactura())
+            using (var frm = new frmFactura(frmType.Crear, null))
+            {
                 frm.ShowDialog();
+                cargarGrilla();
+            }
         }
 
         private void cargarCombos()
         {
-            
+            using (var context = new tpDbContext())
+            {
+                var usuariosCreadores = context.Usuarios.Where(u => u.borrado != true).ToList();
+                LlenarCombo(cboUsuarioCreador, usuariosCreadores, "usuario1", "id_usuario");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             cargarGrilla();
+        }
+
+        private void LlenarCombo(ComboBox cbo, Object source, string display, String value)
+        {
+            // Datasource: establece el origen de datos de este objeto.
+            cbo.DataSource = source;
+            // DisplayMember: establece la propiedad que se va a mostrar para este ListControl.
+            cbo.DisplayMember = display;
+            // ValueMember: establece la ruta de acceso de la propiedad que se utilizará como valor real para los elementos de ListControl.
+            cbo.ValueMember = value; 
+            //SelectedIndex: establece el índice que especifica el elemento seleccionado actualmente.
+            cbo.SelectedIndex = -1;
+        }
+
+        private void btnBaja_Click(object sender, EventArgs e)
+        {
+            if (dgvFacturas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Tiene que seleccionar una factura al menos");
+                return;
+            }
+
+            var facturaSeleccionada = (dynamic)dgvFacturas.SelectedRows[0].DataBoundItem;
+
+            using (var frm = new frmFactura(frmType.Eliminar, (int)facturaSeleccionada.id_factura))
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }
