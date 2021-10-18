@@ -33,9 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,12 +65,34 @@
     <Compile Include="DataAccesLayer\ProductDao.cs" />
     <Compile Include="DataAccesLayer\UnitOfWork.cs" />
     <Compile Include="DataAccesLayer\ValidateUser.cs" />
+    <Compile Include="Entities\Barrio.cs" />
     <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Contacto.cs" />
+    <Compile Include="Entities\Factura.cs" />
+    <Compile Include="Entities\FacturasDetalle.cs" />
     <Compile Include="Entities\ISimpleEntity.cs" />
     <Compile Include="Entities\Neighborhood.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Producto.cs" />
+    <Compile Include="Entities\Proyecto.cs" />
+    <Compile Include="Entities\tpDbContext.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Exceptions\EntityAlreadyExistsException.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Presentation\frmFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmFactura.Designer.cs">
+      <DependentUpon>frmFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmFacturas.Designer.cs">
+      <DependentUpon>frmFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmSimple.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +125,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\frmFactura.resx">
+      <DependentUpon>frmFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmFacturas.resx">
+      <DependentUpon>frmFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmSimple.resx">
       <DependentUpon>frmSimple.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +156,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

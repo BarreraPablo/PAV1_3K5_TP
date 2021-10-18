@@ -75,7 +75,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         private void btnContactos_Click(object sender, EventArgs e)
         {
-            frmContactos form = new frmContactos();
+            frmFacturas form = new frmFacturas();
             AddForm(form);
         }
 
