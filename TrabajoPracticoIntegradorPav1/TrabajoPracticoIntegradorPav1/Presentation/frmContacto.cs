@@ -119,7 +119,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             nuevoContacto.nombre = txtNombre.Text;
             nuevoContacto.apellido = txtApellido.Text;
             nuevoContacto.email = txtEmail.Text;
-            nuevoContacto.telefono = txtEmail.Text;
+            nuevoContacto.telefono = txtTelefono.Text;
             nuevoContacto.borrado = false;
 
             using (var context = new tpDbContext())

@@ -143,7 +143,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.chkDadasDeBaja.AutoSize = true;
             this.chkDadasDeBaja.Location = new System.Drawing.Point(151, 104);
-            this.chkDadasDeBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkDadasDeBaja.Margin = new System.Windows.Forms.Padding(2);
             this.chkDadasDeBaja.Name = "chkDadasDeBaja";
             this.chkDadasDeBaja.Size = new System.Drawing.Size(15, 14);
             this.chkDadasDeBaja.TabIndex = 2;
@@ -181,6 +181,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // txtCuit
             // 
             this.txtCuit.Location = new System.Drawing.Point(389, 25);
+            this.txtCuit.MaxLength = 50;
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(175, 23);
             this.txtCuit.TabIndex = 19;

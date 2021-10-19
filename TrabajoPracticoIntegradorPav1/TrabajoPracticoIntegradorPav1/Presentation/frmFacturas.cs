@@ -20,8 +20,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         public frmFacturas()
         {
             InitializeComponent();
-            cargarGrilla();
             cargarCombos();
+            cargarGrilla();
         }
 
         private void cargarGrilla()
@@ -47,7 +47,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                     facturas = facturas.Where(f => f.Cliente.cuit == txtCuit.Text);
                 }
 
-                if (cboUsuarioCreador.SelectedValue != null)
+                if ((int)cboUsuarioCreador.SelectedValue != -1)
                 {
                     facturas = facturas.Where(f => f.id_usuario_creador == (int)cboUsuarioCreador.SelectedValue);
                 }
@@ -66,10 +66,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                         total = f.Sum(c => c.FacturasDetalles.Select(r => r.precio).Sum())
                     }).ToList();
 
+                var facturasListadoGrilla = facturasResultado.Select(c => new { c.id_factura, c.numero_factura, c.razon_social, fecha = c.fecha.ToString("dd/MM/yyyy"), cuit = c.cuit, usuario = c.usuario, total = c.total }).ToList();
+
                 dgvFacturas.AutoGenerateColumns = false;
                 context.Configuration.LazyLoadingEnabled = false;
 
-                dgvFacturas.DataSource = facturasResultado;
+                dgvFacturas.DataSource = facturasListadoGrilla;
             }
         }
 
@@ -86,7 +88,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         {
             using (var context = new tpDbContext())
             {
-                var usuariosCreadores = context.Usuarios.Where(u => u.borrado != true).ToList();
+                var usuariosCreadores = context.Usuarios.Where(u => u.borrado != true).Prepend(new Usuario { id_usuario = -1, usuario1 = "Seleccionar" }).ToList();
                 LlenarCombo(cboUsuarioCreador, usuariosCreadores, "usuario1", "id_usuario");
             }
         }
@@ -103,9 +105,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // DisplayMember: establece la propiedad que se va a mostrar para este ListControl.
             cbo.DisplayMember = display;
             // ValueMember: establece la ruta de acceso de la propiedad que se utilizará como valor real para los elementos de ListControl.
-            cbo.ValueMember = value; 
+            cbo.ValueMember = value;
             //SelectedIndex: establece el índice que especifica el elemento seleccionado actualmente.
-            cbo.SelectedIndex = -1;
+            cbo.SelectedValue = -1;
         }
 
         private void btnBaja_Click(object sender, EventArgs e)

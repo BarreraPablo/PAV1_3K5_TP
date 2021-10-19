@@ -29,8 +29,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             cargarCombos();
             inicializarTabla();
             fireEvents = true;
-            txtPrecio.Minimum = 1;
-            txtPrecio.Maximum = 15000;
+            txtPrecio.Minimum = 10;
+            txtPrecio.Maximum = 20000;
 
             if (modo == frmType.Eliminar)
             {
@@ -46,7 +46,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                         drDetalle["numero_orden"] = detalle.numero_orden;
                         drDetalle["precio"] = detalle.precio;
                         drDetalle["nombre_producto"] = detalle.Producto != null ? detalle.Producto.nombre : null;
-                        drDetalle["descripcio_proyecto"] = detalle.Proyecto != null ? detalle.Proyecto.descripcion : null;
+                        drDetalle["descripcion_proyecto"] = detalle.Proyecto != null ? detalle.Proyecto.descripcion : null;
                         drDetalle["id_producto"] = detalle.id_producto;
                         drDetalle["id_proyecto"] = detalle.id_proyecto;
 
@@ -78,7 +78,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             dtDetalle.Columns.Add("numero_orden");
             dtDetalle.Columns.Add("precio");
             dtDetalle.Columns.Add("nombre_producto");
-            dtDetalle.Columns.Add("descripcio_proyecto");
+            dtDetalle.Columns.Add("descripcion_proyecto");
             dtDetalle.Columns.Add("id_producto");
             dtDetalle.Columns.Add("id_proyecto");
 
@@ -88,12 +88,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
         private void resetCombos()
         {
-            cbProducto.SelectedItem = null;
-            cbProducto.SelectedIndex = -1;
-            cbProducto.Enabled = true;
-            cbProyecto.SelectedItem = null;
-            cbProyecto.Enabled = true;
-            cbProyecto.SelectedIndex = -1;
+            cbProducto.SelectedValue = -1;
+            cbProyecto.SelectedValue = -1;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -107,8 +103,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             var drDetalle = dtDetalle.NewRow();
             drDetalle["numero_orden"] = dtDetalle.Rows.Count + 1;
             drDetalle["precio"] = txtPrecio.Text;
-            drDetalle["nombre_producto"] = productoSeleccionado != null ? productoSeleccionado.nombre : null;
-            drDetalle["descripcio_proyecto"] = proyectoSeleccionado != null ? proyectoSeleccionado.descripcion : null;
+            drDetalle["nombre_producto"] = productoSeleccionado.id_producto != -1 ? productoSeleccionado.nombre : null;
+            drDetalle["descripcion_proyecto"] = proyectoSeleccionado.id_proyecto != -1 ? proyectoSeleccionado.descripcion : null;
             drDetalle["id_producto"] = productoSeleccionado != null ? productoSeleccionado.id_producto : (int?)null;
             drDetalle["id_proyecto"] = proyectoSeleccionado != null ? proyectoSeleccionado.id_proyecto : (int?)null;
 
@@ -121,7 +117,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
         private bool validarAgregar()
         {
-            if(cbProducto.SelectedIndex == -1 && cbProducto.SelectedIndex == -1)
+            if((int?)cbProducto.SelectedValue == -1 && (int?)cbProyecto.SelectedValue == -1)
             {
                 MessageBox.Show("Tiene que seleccionar un producto o un proyecto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -138,6 +134,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 var productos = context.Productos.Where(c => c.borrado != true).ToList();
                 var proyectos = context.Proyectos.Where(c => c.borrado != null).ToList();
 
+                productos = productos.Prepend(new Producto() { id_producto = -1, nombre = "Seleccionar" }).ToList();
+                proyectos = proyectos.Prepend(new Proyecto() { id_proyecto = -1, descripcion = "Seleccionar" }).ToList();
+
                 LlenarCombo(cbProducto, productos, "nombre", "id_producto");
                 LlenarCombo(cbCliente, clientes, "razon_social", "id_cliente");
                 LlenarCombo(cbProyecto, proyectos, "descripcion", "id_proyecto");
@@ -151,9 +150,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // DisplayMember: establece la propiedad que se va a mostrar para este ListControl.
             cbo.DisplayMember = display;
             // ValueMember: establece la ruta de acceso de la propiedad que se utilizará como valor real para los elementos de ListControl.
-            cbo.ValueMember = value; 
-            //SelectedIndex: establece el índice que especifica el elemento seleccionado actualmente.
-            cbo.SelectedIndex = -1;
+            cbo.ValueMember = value;
+
+            cbo.SelectedValue = -1;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -193,8 +192,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             foreach (DataRow row in dtDetalle.Rows)
             {
                 var detalleFactura = new FacturasDetalle();
-                detalleFactura.id_proyecto = row["id_proyecto"].ToString().ToNullableInt();
-                detalleFactura.id_producto = row["id_producto"].ToString().ToNullableInt();
+                detalleFactura.id_proyecto = int.Parse(row["id_proyecto"].ToString()) != -1 ? int.Parse(row["id_proyecto"].ToString()) : (int?)null;
+                detalleFactura.id_producto = int.Parse(row["id_producto"].ToString()) != -1 ? int.Parse(row["id_producto"].ToString()) : (int?)null;
                 detalleFactura.precio = int.Parse(row["precio"].ToString());
                 detalleFactura.borrado = false;
                 detalleFactura.numero_orden = int.Parse(row["numero_orden"].ToString());
@@ -245,14 +244,18 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
         private void cbProyecto_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(fireEvents)
+            if(fireEvents && cbProyecto.SelectedValue != null && (int)cbProyecto.SelectedValue != -1)
                 cbProducto.Enabled = false;
+            else
+                cbProducto.Enabled = true;
         }
 
         private void cbProducto_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(fireEvents)
+            if(fireEvents && cbProducto.SelectedValue != null && (int)cbProducto.SelectedValue != -1)
                 cbProyecto.Enabled = false;
+            else
+                cbProyecto.Enabled = true;
         }
 
         private void btnBaja_Click(object sender, EventArgs e)

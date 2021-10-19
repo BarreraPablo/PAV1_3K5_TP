@@ -33,6 +33,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.cbCliente = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
+            this.nroOrden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdProyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desProyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbProducto = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbProyecto = new System.Windows.Forms.ComboBox();
@@ -48,12 +54,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.btnEliminar = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.MaskedTextBox();
             this.btnBaja = new System.Windows.Forms.Button();
-            this.nroOrden = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdProyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desProyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
@@ -107,6 +107,62 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalle.Size = new System.Drawing.Size(443, 186);
             this.dgvDetalle.TabIndex = 16;
+            // 
+            // nroOrden
+            // 
+            this.nroOrden.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nroOrden.DataPropertyName = "numero_orden";
+            this.nroOrden.HeaderText = "Nro Orden";
+            this.nroOrden.MinimumWidth = 8;
+            this.nroOrden.Name = "nroOrden";
+            this.nroOrden.ReadOnly = true;
+            // 
+            // IdProyecto
+            // 
+            this.IdProyecto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IdProyecto.DataPropertyName = "id_proyecto";
+            this.IdProyecto.HeaderText = "id_proyecto";
+            this.IdProyecto.MinimumWidth = 8;
+            this.IdProyecto.Name = "IdProyecto";
+            this.IdProyecto.ReadOnly = true;
+            this.IdProyecto.Visible = false;
+            // 
+            // id_producto
+            // 
+            this.id_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.id_producto.DataPropertyName = "id_producto";
+            this.id_producto.HeaderText = "Id producto";
+            this.id_producto.MinimumWidth = 8;
+            this.id_producto.Name = "id_producto";
+            this.id_producto.ReadOnly = true;
+            this.id_producto.Visible = false;
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio.DataPropertyName = "precio";
+            this.precio.HeaderText = "Precio";
+            this.precio.MinimumWidth = 8;
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
+            // 
+            // nombreProducto
+            // 
+            this.nombreProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombreProducto.DataPropertyName = "nombre_producto";
+            this.nombreProducto.HeaderText = "Nombre producto";
+            this.nombreProducto.MinimumWidth = 8;
+            this.nombreProducto.Name = "nombreProducto";
+            this.nombreProducto.ReadOnly = true;
+            // 
+            // desProyecto
+            // 
+            this.desProyecto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.desProyecto.DataPropertyName = "descripcion_proyecto";
+            this.desProyecto.HeaderText = "Descripcion proyecto";
+            this.desProyecto.MinimumWidth = 8;
+            this.desProyecto.Name = "desProyecto";
+            this.desProyecto.ReadOnly = true;
             // 
             // cbProducto
             // 
@@ -267,62 +323,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.btnBaja.UseVisualStyleBackColor = true;
             this.btnBaja.Visible = false;
             this.btnBaja.Click += new System.EventHandler(this.btnBaja_Click);
-            // 
-            // nroOrden
-            // 
-            this.nroOrden.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nroOrden.DataPropertyName = "numero_orden";
-            this.nroOrden.HeaderText = "Nro Orden";
-            this.nroOrden.MinimumWidth = 8;
-            this.nroOrden.Name = "nroOrden";
-            this.nroOrden.ReadOnly = true;
-            // 
-            // IdProyecto
-            // 
-            this.IdProyecto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IdProyecto.DataPropertyName = "id_proyecto";
-            this.IdProyecto.HeaderText = "id_proyecto";
-            this.IdProyecto.MinimumWidth = 8;
-            this.IdProyecto.Name = "IdProyecto";
-            this.IdProyecto.ReadOnly = true;
-            this.IdProyecto.Visible = false;
-            // 
-            // id_producto
-            // 
-            this.id_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.id_producto.DataPropertyName = "id_producto";
-            this.id_producto.HeaderText = "Id producto";
-            this.id_producto.MinimumWidth = 8;
-            this.id_producto.Name = "id_producto";
-            this.id_producto.ReadOnly = true;
-            this.id_producto.Visible = false;
-            // 
-            // precio
-            // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio.DataPropertyName = "precio";
-            this.precio.HeaderText = "Precio";
-            this.precio.MinimumWidth = 8;
-            this.precio.Name = "precio";
-            this.precio.ReadOnly = true;
-            // 
-            // nombreProducto
-            // 
-            this.nombreProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombreProducto.DataPropertyName = "nombre_producto";
-            this.nombreProducto.HeaderText = "Nombre producto";
-            this.nombreProducto.MinimumWidth = 8;
-            this.nombreProducto.Name = "nombreProducto";
-            this.nombreProducto.ReadOnly = true;
-            // 
-            // desProyecto
-            // 
-            this.desProyecto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.desProyecto.DataPropertyName = "descripcion_proyecto";
-            this.desProyecto.HeaderText = "Descripcion proyecto";
-            this.desProyecto.MinimumWidth = 8;
-            this.desProyecto.Name = "desProyecto";
-            this.desProyecto.ReadOnly = true;
             // 
             // frmFactura
             // 

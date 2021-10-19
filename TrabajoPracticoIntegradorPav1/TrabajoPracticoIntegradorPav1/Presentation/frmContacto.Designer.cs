@@ -42,40 +42,38 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(153, 36);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNombre.Location = new System.Drawing.Point(102, 23);
+            this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(187, 26);
+            this.txtNombre.Size = new System.Drawing.Size(126, 20);
             this.txtNombre.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(50, 37);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(33, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 25);
+            this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Nombre";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(153, 87);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtApellido.Location = new System.Drawing.Point(102, 57);
+            this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(187, 26);
+            this.txtApellido.Size = new System.Drawing.Size(126, 20);
             this.txtApellido.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 88);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(31, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 25);
+            this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Apellido";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -85,37 +83,35 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(72, 141);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(48, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 25);
+            this.label1.Size = new System.Drawing.Size(47, 17);
             this.label1.TabIndex = 10;
             this.label1.Text = "Email";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(153, 142);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEmail.Location = new System.Drawing.Point(102, 92);
+            this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(187, 26);
+            this.txtEmail.Size = new System.Drawing.Size(126, 20);
             this.txtEmail.TabIndex = 9;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(153, 195);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTelefono.Location = new System.Drawing.Point(102, 127);
+            this.txtTelefono.MaxLength = 50;
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(187, 26);
+            this.txtTelefono.Size = new System.Drawing.Size(126, 20);
             this.txtTelefono.TabIndex = 11;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(40, 194);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(27, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 25);
+            this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 12;
             this.label4.Text = "Telefono";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -123,10 +119,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // btnAceptar
             // 
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.Location = new System.Drawing.Point(77, 243);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAceptar.Location = new System.Drawing.Point(51, 158);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(236, 60);
+            this.btnAceptar.Size = new System.Drawing.Size(157, 39);
             this.btnAceptar.TabIndex = 17;
             this.btnAceptar.Text = "Crear";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -134,9 +129,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // frmContacto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 324);
+            this.ClientSize = new System.Drawing.Size(271, 222);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTelefono);
@@ -146,8 +141,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
-            this.MaximumSize = new System.Drawing.Size(422, 380);
-            this.MinimumSize = new System.Drawing.Size(422, 380);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(287, 261);
+            this.MinimumSize = new System.Drawing.Size(287, 261);
             this.Name = "frmContacto";
             this.Text = "Contacto";
             this.ResumeLayout(false);
