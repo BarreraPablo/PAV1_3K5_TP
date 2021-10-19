@@ -21,7 +21,7 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient
 
             try
             {
-                string consulta = "SELECT * FROM Clientes WHERE id_cliente like @id";
+                string consulta = "SELECT * FROM Clientes WHERE id_cliente = @id";
 
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@id", id);
@@ -37,9 +37,10 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient
                 if (dr != null && dr.Read())
                 {
                     c.id_cliente = int.Parse(dr["id_cliente"].ToString());
-                    c.cuit = int.Parse(dr["cuit"].ToString());
+                    c.cuit = long.Parse(dr["cuit"].ToString());
                     c.razon_social = dr["razon_social"].ToString();
-                    c.borrado = int.Parse(dr["borrado"].ToString());
+                    var borrado = dr["borrado"] as bool?;
+                    c.borrado = borrado.HasValue && borrado.Value ? 1 : 0;
                     c.calle = dr["calle"].ToString();
                     c.numero = int.Parse(dr["numero"].ToString());
                     c.fecha_alta = DateTime.Parse(dr["fecha_alta"].ToString());

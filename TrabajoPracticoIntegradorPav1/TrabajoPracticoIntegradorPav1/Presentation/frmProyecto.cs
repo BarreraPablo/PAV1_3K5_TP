@@ -203,12 +203,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private Project ObtenerDatosProyecto()
         {
             Project p = new Project();
-            p.id_proyecto = int.Parse(txtId.Text);
-            p.id_producto = cmbProductos.SelectedIndex;
+            p.id_proyecto = String.IsNullOrEmpty(txtId.Text) ? 0 : int.Parse(txtId.Text);
+            p.id_producto = (int)cmbProductos.SelectedValue;
             p.descripcion = txtDescripcion.Text;
             p.version = txtVersion.Text;
             p.alcance = txtAlcance.Text;
-            p.id_responsable = cmbUsuarios.SelectedIndex;
+            p.id_responsable = (int)cmbUsuarios.SelectedValue;
 
             return p;
         }
