@@ -36,6 +36,7 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmProject
 
                 if (dr != null && dr.Read())
                 {
+                    p.id_proyecto = int.Parse(dr["id_proyecto"].ToString());
                     p.descripcion = dr["descripcion"].ToString();
                     p.version = dr["version"].ToString();
                     p.alcance = dr["alcance"].ToString();

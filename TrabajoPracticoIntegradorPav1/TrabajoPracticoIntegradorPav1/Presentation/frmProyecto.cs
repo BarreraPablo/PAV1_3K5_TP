@@ -149,8 +149,43 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             {
                 cn.Close();
             }
+        }
 
+        //Metodo para cargar la grilla con los proyectos borrados
+        private void CargarGrillaBorrados()
+        {
 
+            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["conexionDB"];
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+
+            try
+            {
+
+                string consulta = "SELECT id_proyecto, id_producto, descripcion, version, alcance, id_responsable FROM Proyectos WHERE borrado = 1 ";
+
+                cmd.Parameters.Clear();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                cn.Open();
+                cmd.Connection = cn;
+
+                DataTable table = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(table);
+
+                dgvProyectos.DataSource = table;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
 
         //Metodo para limpiar los campos
@@ -161,16 +196,25 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             txtVersion.Text = "";
             txtAlcance.Text = "";
             cmbUsuarios.SelectedIndex = -1;
-            
+            txtId.Text = "";
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
+
+        //Metodo para obtener los datos que tengo en los textbox y checkboxs
+        private Project ObtenerDatosProyecto()
         {
             Project p = new Project();
+            p.id_proyecto = int.Parse(txtId.Text);
             p.id_producto = cmbProductos.SelectedIndex;
             p.descripcion = txtDescripcion.Text;
             p.version = txtVersion.Text;
             p.alcance = txtAlcance.Text;
             p.id_responsable = cmbUsuarios.SelectedIndex;
+
+            return p;
+        }
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Project p = ObtenerDatosProyecto();
 
             try
             {
@@ -203,11 +247,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
                 Project p = GetProject.Get(id);
 
-                txtDescripcion.Text = p.descripcion;
-                txtVersion.Text = p.version;
-                txtAlcance.Text = p.alcance;
-                cmbProductos.SelectedIndex = p.id_producto;
-                cmbUsuarios.SelectedIndex = p.id_responsable;
+                CargarCampos(p);
             }
             catch (Exception)
             {
@@ -217,9 +257,81 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
                 LimpiarCampos();
             }
+        }
+
+        //Metodo para cargar los textbox
+        private void CargarCampos(Project p)
+        {
+            txtId.Text = p.id_proyecto.ToString();
+            txtDescripcion.Text = p.descripcion;
+            txtVersion.Text = p.version;
+            txtAlcance.Text = p.alcance;
+            cmbProductos.SelectedIndex = p.id_producto;
+            cmbUsuarios.SelectedIndex = p.id_responsable;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Project p = ObtenerDatosProyecto();
+            try
+            {
+                bool result = EditProject.Edit(p);
+                if (result)
+                {
+                    MessageBox.Show("Proyecto editado correctamente");
+                    CargarComboProductos();
+                    CargarComboUsuarios();
+                    CargarGrilla();
+                    LimpiarCampos();
+                    btnEditar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    btnAgregar.Enabled = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al intentar editar el proyecto" + ex.Message);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Project p = ObtenerDatosProyecto();
+
+            try
+            {
+                bool result = DeleteProject.Delete(p);
+                if (result)
+                {
+                    MessageBox.Show("Proyecto eliminado");
+                    CargarComboProductos();
+                    CargarComboUsuarios();
+                    CargarGrilla();
+                    LimpiarCampos();
+                    btnEditar.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    btnAgregar.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al intentar eliminar el proyecto" + ex.Message);
+            }
             
         }
 
-       
+        private void chkBorrado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBorrado.Checked)
+            {
+                CargarGrillaBorrados();
+            }
+            else
+            {
+                CargarGrilla();
+            }
+            
+        }
     }
 }

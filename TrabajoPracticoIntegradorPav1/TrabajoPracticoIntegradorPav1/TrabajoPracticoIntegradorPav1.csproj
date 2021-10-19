@@ -77,6 +77,8 @@
     <Compile Include="Business\ProductService.cs" />
     <Compile Include="DataAccesLayer\AbmClient\AddClient.cs" />
     <Compile Include="DataAccesLayer\AbmProject\AddProject.cs" />
+    <Compile Include="DataAccesLayer\AbmProject\DeleteProject.cs" />
+    <Compile Include="DataAccesLayer\AbmProject\EditProject.cs" />
     <Compile Include="DataAccesLayer\AbmProject\GetProject.cs" />
     <Compile Include="DataAccesLayer\IGeneralDao.cs" />
     <Compile Include="DataAccesLayer\NeighborhoodDao.cs" />
