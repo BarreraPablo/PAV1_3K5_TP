@@ -40,6 +40,10 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.txtAlcance = new System.Windows.Forms.TextBox();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkBorrado = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -51,10 +55,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.version = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alcance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.chkBorrado = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProyectos)).BeginInit();
@@ -174,6 +174,44 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta de proyectos";
             // 
+            // chkBorrado
+            // 
+            this.chkBorrado.AutoSize = true;
+            this.chkBorrado.Location = new System.Drawing.Point(92, 116);
+            this.chkBorrado.Name = "chkBorrado";
+            this.chkBorrado.Size = new System.Drawing.Size(15, 14);
+            this.chkBorrado.TabIndex = 23;
+            this.chkBorrado.UseVisualStyleBackColor = true;
+            this.chkBorrado.CheckedChanged += new System.EventHandler(this.chkBorrado_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(17, 113);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 17);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Borrados";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(17, 35);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(21, 17);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Id";
+            // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(44, 32);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(36, 23);
+            this.txtId.TabIndex = 20;
+            // 
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -282,44 +320,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.usuario.Name = "usuario";
             this.usuario.ReadOnly = true;
             this.usuario.Width = 110;
-            // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(44, 32);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(36, 23);
-            this.txtId.TabIndex = 20;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 35);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(21, 17);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Id";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 113);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 17);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Borrados";
-            // 
-            // chkBorrado
-            // 
-            this.chkBorrado.AutoSize = true;
-            this.chkBorrado.Location = new System.Drawing.Point(92, 116);
-            this.chkBorrado.Name = "chkBorrado";
-            this.chkBorrado.Size = new System.Drawing.Size(15, 14);
-            this.chkBorrado.TabIndex = 23;
-            this.chkBorrado.UseVisualStyleBackColor = true;
-            this.chkBorrado.CheckedChanged += new System.EventHandler(this.chkBorrado_CheckedChanged);
             // 
             // frmProyecto
             // 

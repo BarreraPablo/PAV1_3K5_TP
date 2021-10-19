@@ -20,7 +20,7 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient
 
             try
             {
-                string consulta = "INSERT INTO Clientes (cuit, razon_social, calle, numero, fecha_alta, id_barrio) VALUES (@cuit, @razon_social, @calle, @numero, @fecha_alta, @barrio)";
+                string consulta = "INSERT INTO Clientes (cuit, razon_social, calle, numero, fecha_alta, id_barrio, id_contacto) VALUES (@cuit, @razon_social, @calle, @numero, @fecha_alta, @barrio, @contacto)";
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
@@ -30,7 +30,7 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient
                 cmd.Parameters.AddWithValue("@numero", c.numero);
                 cmd.Parameters.AddWithValue("@fecha_alta", c.fecha_alta);
                 cmd.Parameters.AddWithValue("@barrio", c.id_barrio);
-               
+                cmd.Parameters.AddWithValue("@contacto", c.id_contacto);
 
                 cmd.CommandText = consulta;
 

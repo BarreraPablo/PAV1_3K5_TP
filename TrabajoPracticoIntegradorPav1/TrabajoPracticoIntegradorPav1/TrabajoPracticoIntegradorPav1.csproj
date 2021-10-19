@@ -76,6 +76,7 @@
     <Compile Include="Business\NeighborhoodService.cs" />
     <Compile Include="Business\ProductService.cs" />
     <Compile Include="DataAccesLayer\AbmClient\AddClient.cs" />
+    <Compile Include="DataAccesLayer\AbmClient\GetClient.cs" />
     <Compile Include="DataAccesLayer\AbmProject\AddProject.cs" />
     <Compile Include="DataAccesLayer\AbmProject\DeleteProject.cs" />
     <Compile Include="DataAccesLayer\AbmProject\EditProject.cs" />

@@ -57,6 +57,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.fecha_alta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_barrio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbContacto = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -65,6 +68,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.txtId);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.cmbContacto);
             this.groupBox1.Controls.Add(this.btnAgregar);
             this.groupBox1.Controls.Add(this.btnEditar);
             this.groupBox1.Controls.Add(this.btnEliminar);
@@ -125,7 +131,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.txtNumeroCalle.Location = new System.Drawing.Point(689, 28);
             this.txtNumeroCalle.Mask = "9999999";
             this.txtNumeroCalle.Name = "txtNumeroCalle";
-            this.txtNumeroCalle.Size = new System.Drawing.Size(69, 23);
+            this.txtNumeroCalle.Size = new System.Drawing.Size(56, 23);
             this.txtNumeroCalle.TabIndex = 13;
             this.txtNumeroCalle.ValidatingType = typeof(int);
             // 
@@ -141,7 +147,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(442, 70);
+            this.label7.Location = new System.Drawing.Point(486, 69);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 17);
             this.label7.TabIndex = 11;
@@ -188,16 +194,16 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // txtCalle
             // 
-            this.txtCalle.Location = new System.Drawing.Point(431, 28);
+            this.txtCalle.Location = new System.Drawing.Point(445, 28);
             this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(216, 23);
+            this.txtCalle.Size = new System.Drawing.Size(202, 23);
             this.txtCalle.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(384, 31);
+            this.label3.Location = new System.Drawing.Point(395, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 17);
             this.label3.TabIndex = 4;
@@ -205,16 +211,16 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // txtRazonSocial
             // 
-            this.txtRazonSocial.Location = new System.Drawing.Point(245, 28);
+            this.txtRazonSocial.Location = new System.Drawing.Point(295, 28);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(126, 23);
+            this.txtRazonSocial.Size = new System.Drawing.Size(93, 23);
             this.txtRazonSocial.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(139, 31);
+            this.label2.Location = new System.Drawing.Point(188, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 17);
             this.label2.TabIndex = 2;
@@ -222,7 +228,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // txtCuit
             // 
-            this.txtCuit.Location = new System.Drawing.Point(44, 28);
+            this.txtCuit.Location = new System.Drawing.Point(98, 28);
             this.txtCuit.Mask = "99999999999";
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(83, 23);
@@ -233,7 +239,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 31);
+            this.label1.Location = new System.Drawing.Point(61, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 17);
             this.label1.TabIndex = 0;
@@ -287,6 +293,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.Size = new System.Drawing.Size(752, 204);
             this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
             // 
             // cuit
             // 
@@ -343,6 +350,32 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.id_contacto.ReadOnly = true;
             this.id_contacto.Width = 120;
             // 
+            // cmbContacto
+            // 
+            this.cmbContacto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbContacto.Location = new System.Drawing.Point(564, 66);
+            this.cmbContacto.Name = "cmbContacto";
+            this.cmbContacto.Size = new System.Drawing.Size(181, 24);
+            this.cmbContacto.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(8, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(21, 17);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Id";
+            // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(30, 28);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(24, 23);
+            this.txtId.TabIndex = 19;
+            // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,5 +427,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.ComboBox cmbContacto;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label9;
     }
 }

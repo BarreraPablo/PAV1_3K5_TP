@@ -26,8 +26,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         {
             try
             {
-                CargarCombo();
+                CargarComboBarrio();
+                CargarComboContacto();
                 CargarGrilla();
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -36,7 +39,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             
         }
         //Metodo para cargar el combobox de barrios
-        private void CargarCombo()
+        private void CargarComboBarrio()
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["conexionDB"];
             SqlCommand cmd = new SqlCommand();
@@ -61,6 +64,44 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 cmbBarrio.DisplayMember = "nombre";
                 cmbBarrio.ValueMember = "id_barrio";
                 cmbBarrio.SelectedIndex = -1;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        //Metodo para cargar el combo de contactos
+        private void CargarComboContacto()
+        {
+            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["conexionDB"];
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+
+            try
+            {
+                string consulta = "SELECT * FROM Contactos WHERE borrado IS NULL or borrado = 0";
+
+                cmd.Parameters.Clear();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+
+                cn.Open();
+                cmd.Connection = cn;
+
+                DataTable table = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(table);
+
+                cmbContacto.DataSource = table;
+                cmbContacto.DisplayMember = "telefono";
+                cmbContacto.ValueMember = "id_contacto";
+                cmbContacto.SelectedIndex = -1;
             }
             catch (Exception)
             {
@@ -111,23 +152,33 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
 
         }
+
+        
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Client c = new Client();
-            c.cuit = long.Parse(txtCuit.Text);
-            c.razon_social = txtRazonSocial.Text;
-            c.calle = txtCalle.Text;
-            c.numero = int.Parse(txtNumeroCalle.Text);
-            c.fecha_alta = DateTime.ParseExact(txtFechaAlta.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            c.id_barrio = (int)cmbBarrio.SelectedValue;
+
 
             try
             {
+
+                Client c = new Client();
+                c.cuit = long.Parse(txtCuit.Text);
+                c.razon_social = txtRazonSocial.Text;
+                c.calle = txtCalle.Text;
+                c.numero = int.Parse(txtNumeroCalle.Text);
+                c.fecha_alta = DateTime.ParseExact(txtFechaAlta.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                c.id_barrio = (int)cmbBarrio.SelectedValue;
+                c.id_contacto = (int)cmbContacto.SelectedValue;
+
                 bool result = AddClient.Add(c);
                 if (result)
                 {
                     MessageBox.Show("Cliente agregado");
                     CargarGrilla();
+                    LimpiarCampos();
+                    txtCuit.Focus();
+                    btnEditar.Enabled = false;
+                    btnEliminar.Enabled = false;
                 }
                 else
                 {
@@ -137,6 +188,55 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Metodo para limpiar los campos
+        private void LimpiarCampos()
+        {
+            txtId.Text = "";
+            txtCuit.Text = "";
+            txtCalle.Text = "";
+            txtNumeroCalle.Text = "";
+            txtFechaAlta.Text = "";
+            cmbBarrio.SelectedIndex = -1;
+            cmbContacto.SelectedIndex = -1;
+        }
+
+        //Metodo para cargar los campos
+        private void CargarCampos(Client c)
+        {
+            txtId.Text = c.id_contacto.ToString();
+            txtCuit.Text = c.cuit.ToString();
+            txtRazonSocial.Text = c.razon_social;
+            txtCalle.Text = c.calle;
+            txtNumeroCalle.Text = c.numero.ToString();
+            txtFechaAlta.Text = c.fecha_alta.ToString();
+            cmbBarrio.SelectedIndex = c.id_barrio;
+            cmbBarrio.SelectedIndex = c.id_contacto;
+        }
+        private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnAgregar.Enabled = false;
+
+            try
+            {
+                int indice = e.RowIndex;
+                DataGridViewRow filaSeleccionada = dgvClientes.Rows[indice];
+                string id = filaSeleccionada.Cells["id_cliente"].Value.ToString();
+
+                Client c = GetClient.Get(id);
+                CargarCampos(c);
+            }
+            catch (Exception)
+            {
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnAgregar.Enabled = true;
+
+                LimpiarCampos();
             }
         }
     }
