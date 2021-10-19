@@ -124,8 +124,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
             try
             {
-
-                string consulta = "select cuit, razon_social, calle, numero, fecha_alta, Barrios.nombre AS barrio from Clientes INNER JOIN Barrios ON Clientes.id_barrio = Barrios.id_barrio WHERE Clientes.borrado IS NULL";
+                string consulta = "SELECT id_cliente, cuit, razon_social, calle, numero, fecha_alta, Barrios.nombre AS barrio from Clientes INNER JOIN Barrios ON Clientes.id_barrio = Barrios.id_barrio WHERE Clientes.borrado IS NULL";
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
@@ -153,16 +152,14 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
         }
 
-        
         private void btnAgregar_Click(object sender, EventArgs e)
         {
 
-
             try
             {
-
                 Client c = new Client();
-                c.cuit = long.Parse(txtCuit.Text);
+                c.id_cliente = int.Parse(txtId.Text);
+                
                 c.razon_social = txtRazonSocial.Text;
                 c.calle = txtCalle.Text;
                 c.numero = int.Parse(txtNumeroCalle.Text);
@@ -228,6 +225,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 string id = filaSeleccionada.Cells["id_cliente"].Value.ToString();
 
                 Client c = GetClient.Get(id);
+
                 CargarCampos(c);
             }
             catch (Exception)

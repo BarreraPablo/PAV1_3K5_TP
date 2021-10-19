@@ -50,6 +50,10 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.cmbContacto = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razon_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,9 +61,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.fecha_alta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_barrio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbContacto = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -281,6 +282,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.cuit,
             this.razon_social,
             this.calle,
@@ -294,6 +296,40 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.dgvClientes.Size = new System.Drawing.Size(752, 204);
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
+            // 
+            // cmbContacto
+            // 
+            this.cmbContacto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbContacto.Location = new System.Drawing.Point(564, 66);
+            this.cmbContacto.Name = "cmbContacto";
+            this.cmbContacto.Size = new System.Drawing.Size(181, 24);
+            this.cmbContacto.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(8, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(21, 17);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Id";
+            // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(30, 28);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(24, 23);
+            this.txtId.TabIndex = 19;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id_cliente";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 30;
             // 
             // cuit
             // 
@@ -350,32 +386,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.id_contacto.ReadOnly = true;
             this.id_contacto.Width = 120;
             // 
-            // cmbContacto
-            // 
-            this.cmbContacto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbContacto.Location = new System.Drawing.Point(564, 66);
-            this.cmbContacto.Name = "cmbContacto";
-            this.cmbContacto.Size = new System.Drawing.Size(181, 24);
-            this.cmbContacto.TabIndex = 17;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(21, 17);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Id";
-            // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(30, 28);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(24, 23);
-            this.txtId.TabIndex = 19;
-            // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,6 +427,13 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.MaskedTextBox txtNumeroCalle;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.ComboBox cmbContacto;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn razon_social;
         private System.Windows.Forms.DataGridViewTextBoxColumn calle;
@@ -424,11 +441,5 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_alta;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_barrio;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_contacto;
-        private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.ComboBox cmbContacto;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label label9;
     }
 }
