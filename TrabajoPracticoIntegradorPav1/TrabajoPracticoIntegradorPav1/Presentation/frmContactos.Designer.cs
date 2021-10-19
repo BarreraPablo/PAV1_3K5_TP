@@ -125,7 +125,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.txtTelefono.Location = new System.Drawing.Point(392, 67);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(126, 23);
+            this.txtTelefono.Size = new System.Drawing.Size(173, 23);
             this.txtTelefono.TabIndex = 23;
             // 
             // label1
@@ -143,7 +143,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.txtEmail.Location = new System.Drawing.Point(392, 31);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(126, 23);
+            this.txtEmail.Size = new System.Drawing.Size(173, 23);
             this.txtEmail.TabIndex = 21;
             // 
             // label3
@@ -161,14 +161,14 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.txtApellido.Location = new System.Drawing.Point(93, 66);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(126, 23);
+            this.txtApellido.Size = new System.Drawing.Size(163, 23);
             this.txtApellido.TabIndex = 19;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(93, 31);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(126, 23);
+            this.txtNombre.Size = new System.Drawing.Size(163, 23);
             this.txtNombre.TabIndex = 18;
             // 
             // label2

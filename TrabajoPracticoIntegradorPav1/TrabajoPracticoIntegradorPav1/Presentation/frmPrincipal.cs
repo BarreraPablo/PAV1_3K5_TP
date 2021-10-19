@@ -24,32 +24,33 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         private void CustomizeDesign()
         {
-            panelSubMenuGestion.Visible = false;
-            panelSubMenuReportes.Visible = false;
+            panelSubMenuSoporte.Visible = false;
+            panelSubMenuTransacciones.Visible = false;
+            pnlSubMenuReportes.Visible = false;
         }
 
-        private void btnGestionar_Click(object sender, EventArgs e)
+        private void btnSoporte_Click(object sender, EventArgs e)
         {
-            if (panelSubMenuGestion.Visible == false)
+            if (panelSubMenuSoporte.Visible == false)
             {
-                panelSubMenuGestion.Visible = true;
+                panelSubMenuSoporte.Visible = true;
             }
-            else if (panelSubMenuGestion.Visible == true)
+            else if (panelSubMenuSoporte.Visible == true)
             {
-                panelSubMenuGestion.Visible = false;
+                panelSubMenuSoporte.Visible = false;
             }
             
         }
 
-        private void btnReportes_Click(object sender, EventArgs e)
+        private void btnOperaciones_Click(object sender, EventArgs e)
         {
-            if (panelSubMenuReportes.Visible == false)
+            if (panelSubMenuTransacciones.Visible == false)
             {
-                panelSubMenuReportes.Visible = true;
+                panelSubMenuTransacciones.Visible = true;
             }
-            else if (panelSubMenuReportes.Visible == true)
+            else if (panelSubMenuTransacciones.Visible == true)
             {
-                panelSubMenuReportes.Visible = false;
+                panelSubMenuTransacciones.Visible = false;
             }
         }
 
@@ -94,6 +95,24 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         private void btnContactos_Click_1(object sender, EventArgs e)
         {
             frmContactos form = new frmContactos();
+            AddForm(form);
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            if (pnlSubMenuReportes.Visible == false)
+            {
+                pnlSubMenuReportes.Visible = true;
+            }
+            else if (pnlSubMenuReportes.Visible == true)
+            {
+                pnlSubMenuReportes.Visible = false;
+            }
+        }
+
+        private void btnFacturas_Click(object sender, EventArgs e)
+        {
+            frmFacturas form = new frmFacturas();
             AddForm(form);
         }
     }
