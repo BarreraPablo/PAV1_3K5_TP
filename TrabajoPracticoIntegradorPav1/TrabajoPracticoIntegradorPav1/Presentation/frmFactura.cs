@@ -132,7 +132,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             {
                 var clientes = context.Clientes.Where(c => c.borrado != true).ToList();
                 var productos = context.Productos.Where(c => c.borrado != true).ToList();
-                var proyectos = context.Proyectos.Where(c => c.borrado != null).ToList();
+                var proyectos = context.Proyectos.Where(c => c.borrado == null).ToList();
 
                 productos = productos.Prepend(new Producto() { id_producto = -1, nombre = "Seleccionar" }).ToList();
                 proyectos = proyectos.Prepend(new Proyecto() { id_proyecto = -1, descripcion = "Seleccionar" }).ToList();

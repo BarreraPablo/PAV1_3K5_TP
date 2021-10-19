@@ -115,5 +115,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             frmFacturas form = new frmFacturas();
             AddForm(form);
         }
+
+        private void btnProyectos_Click(object sender, EventArgs e)
+        {
+            frmProyecto frm = new frmProyecto();
+            AddForm(frm);
+        }
     }
 }

@@ -249,7 +249,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
                 CargarCampos(p);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 btnEditar.Enabled = false;
                 btnEliminar.Enabled = false;
@@ -266,8 +266,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             txtDescripcion.Text = p.descripcion;
             txtVersion.Text = p.version;
             txtAlcance.Text = p.alcance;
-            cmbProductos.SelectedIndex = p.id_producto;
-            cmbUsuarios.SelectedIndex = p.id_responsable;
+            cmbProductos.SelectedValue = p.id_producto;
+            cmbUsuarios.SelectedValue = p.id_responsable;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

@@ -48,6 +48,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelPadre = new System.Windows.Forms.Panel();
+            this.btnProyectos = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.pnlSubMenuReportes.SuspendLayout();
             this.panelSubMenuTransacciones.SuspendLayout();
@@ -82,7 +83,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.btnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAyuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAyuda.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAyuda.Location = new System.Drawing.Point(0, 566);
+            this.btnAyuda.Location = new System.Drawing.Point(0, 599);
             this.btnAyuda.Name = "btnAyuda";
             this.btnAyuda.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnAyuda.Size = new System.Drawing.Size(211, 39);
@@ -98,7 +99,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.pnlSubMenuReportes.Controls.Add(this.button3);
             this.pnlSubMenuReportes.Controls.Add(this.button4);
             this.pnlSubMenuReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSubMenuReportes.Location = new System.Drawing.Point(0, 456);
+            this.pnlSubMenuReportes.Location = new System.Drawing.Point(0, 489);
             this.pnlSubMenuReportes.Name = "pnlSubMenuReportes";
             this.pnlSubMenuReportes.Size = new System.Drawing.Size(211, 110);
             this.pnlSubMenuReportes.TabIndex = 7;
@@ -159,7 +160,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReportes.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnReportes.Location = new System.Drawing.Point(0, 417);
+            this.btnReportes.Location = new System.Drawing.Point(0, 450);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnReportes.Size = new System.Drawing.Size(211, 39);
@@ -174,7 +175,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.panelSubMenuTransacciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
             this.panelSubMenuTransacciones.Controls.Add(this.btnFacturas);
             this.panelSubMenuTransacciones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubMenuTransacciones.Location = new System.Drawing.Point(0, 374);
+            this.panelSubMenuTransacciones.Location = new System.Drawing.Point(0, 407);
             this.panelSubMenuTransacciones.Name = "panelSubMenuTransacciones";
             this.panelSubMenuTransacciones.Size = new System.Drawing.Size(211, 43);
             this.panelSubMenuTransacciones.TabIndex = 4;
@@ -204,7 +205,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.btnTransacciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransacciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransacciones.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnTransacciones.Location = new System.Drawing.Point(0, 335);
+            this.btnTransacciones.Location = new System.Drawing.Point(0, 368);
             this.btnTransacciones.Name = "btnTransacciones";
             this.btnTransacciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTransacciones.Size = new System.Drawing.Size(211, 39);
@@ -217,6 +218,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             // panelSubMenuSoporte
             // 
             this.panelSubMenuSoporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelSubMenuSoporte.Controls.Add(this.btnProyectos);
             this.panelSubMenuSoporte.Controls.Add(this.btnContactos);
             this.panelSubMenuSoporte.Controls.Add(this.btnProductos);
             this.panelSubMenuSoporte.Controls.Add(this.btnBarrios);
@@ -224,7 +226,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.panelSubMenuSoporte.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuSoporte.Location = new System.Drawing.Point(0, 189);
             this.panelSubMenuSoporte.Name = "panelSubMenuSoporte";
-            this.panelSubMenuSoporte.Size = new System.Drawing.Size(211, 146);
+            this.panelSubMenuSoporte.Size = new System.Drawing.Size(211, 179);
             this.panelSubMenuSoporte.TabIndex = 2;
             // 
             // btnContactos
@@ -341,6 +343,23 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.panelPadre.Size = new System.Drawing.Size(788, 542);
             this.panelPadre.TabIndex = 1;
             // 
+            // btnProyectos
+            // 
+            this.btnProyectos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProyectos.FlatAppearance.BorderSize = 0;
+            this.btnProyectos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProyectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProyectos.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnProyectos.Location = new System.Drawing.Point(0, 138);
+            this.btnProyectos.Name = "btnProyectos";
+            this.btnProyectos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnProyectos.Size = new System.Drawing.Size(211, 34);
+            this.btnProyectos.TabIndex = 5;
+            this.btnProyectos.Text = "Proyectos";
+            this.btnProyectos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProyectos.UseVisualStyleBackColor = true;
+            this.btnProyectos.Click += new System.EventHandler(this.btnProyectos_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,5 +403,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Button btnFacturas;
+        private System.Windows.Forms.Button btnProyectos;
     }
 }
