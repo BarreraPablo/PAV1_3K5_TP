@@ -177,8 +177,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
 
         private void btnBuscar_KeyUp(object sender, KeyEventArgs e)
         {
-
-
             try
             {
                dgvBarrios.DataSource = simpleService.GetByName(txtBuscar.Text);

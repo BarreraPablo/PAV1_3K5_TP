@@ -164,6 +164,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 c.calle = txtCalle.Text;
                 c.numero = int.Parse(txtNumeroCalle.Text);
                 c.fecha_alta = DateTime.ParseExact(txtFechaAlta.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                c.fecha_alta = DateTime.Now;
                 c.id_barrio = (int)cmbBarrio.SelectedValue;
                 c.id_contacto = (int)cmbContacto.SelectedValue;
 
@@ -179,12 +180,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrio un error inesperado al intentas cargar el cliente");
+                    MessageBox.Show("Ocurrio un error inesperado al intentar cargar el cliente");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al intentar cargar el cliente " + ex.Message);
             }
         }
 
