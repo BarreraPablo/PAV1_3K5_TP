@@ -27,6 +27,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 CargarComboProductos();
                 CargarComboUsuarios();
                 CargarGrilla();
+                LimpiarCampos();
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -122,7 +125,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             try
             {
 
-                string consulta = "SELECT id_producto, descripcion, version, alcance, id_responsable FROM Proyectos WHERE borrado IS NULL ";
+                string consulta = "SELECT id_proyecto, id_producto, descripcion, version, alcance, id_responsable FROM Proyectos WHERE borrado IS NULL ";
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
@@ -150,6 +153,16 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
         }
 
+        //Metodo para limpiar los campos
+        private void LimpiarCampos()
+        {
+            cmbProductos.SelectedIndex = -1;
+            txtDescripcion.Text = "";
+            txtVersion.Text = "";
+            txtAlcance.Text = "";
+            cmbUsuarios.SelectedIndex = -1;
+            
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Project p = new Project();
@@ -165,12 +178,48 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 if (result)
                 {
                     MessageBox.Show("se agrego el proyecto correctamente");
+                    CargarGrilla();
+                    LimpiarCampos();
+
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al intentar agregar el proyecto" + ex.Message);
+                MessageBox.Show("Error al intentar agregar el proyecto " + ex.Message);
             }
         }
+
+        private void dgvProyectos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnAgregar.Enabled = false;
+
+            try
+            {
+                int indice = e.RowIndex;
+                DataGridViewRow filaSeleccionada = dgvProyectos.Rows[indice];
+                string id = filaSeleccionada.Cells["id_proyecto"].Value.ToString();
+
+                Project p = GetProject.Get(id);
+
+                txtDescripcion.Text = p.descripcion;
+                txtVersion.Text = p.version;
+                txtAlcance.Text = p.alcance;
+                cmbProductos.SelectedIndex = p.id_producto;
+                cmbUsuarios.SelectedIndex = p.id_responsable;
+            }
+            catch (Exception)
+            {
+                btnEditar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnAgregar.Enabled = true;
+
+                LimpiarCampos();
+            }
+            
+        }
+
+       
     }
 }

@@ -40,16 +40,17 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.txtAlcance = new System.Windows.Forms.TextBox();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvProyectos = new System.Windows.Forms.DataGridView();
+            this.id_proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.version = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alcance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProyectos)).BeginInit();
@@ -165,6 +166,37 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta de proyectos";
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(664, 102);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(95, 39);
+            this.btnEliminar.TabIndex = 19;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Location = new System.Drawing.Point(563, 102);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(95, 39);
+            this.btnEditar.TabIndex = 18;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(462, 102);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(95, 39);
+            this.btnAgregar.TabIndex = 17;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvProyectos);
@@ -182,6 +214,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.dgvProyectos.AllowUserToDeleteRows = false;
             this.dgvProyectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProyectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_proyecto,
             this.producto,
             this.descripcion,
             this.version,
@@ -192,6 +225,15 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.dgvProyectos.ReadOnly = true;
             this.dgvProyectos.Size = new System.Drawing.Size(753, 221);
             this.dgvProyectos.TabIndex = 0;
+            this.dgvProyectos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProyectos_CellClick);
+            // 
+            // id_proyecto
+            // 
+            this.id_proyecto.DataPropertyName = "id_proyecto";
+            this.id_proyecto.HeaderText = "Id";
+            this.id_proyecto.Name = "id_proyecto";
+            this.id_proyecto.ReadOnly = true;
+            this.id_proyecto.Width = 30;
             // 
             // producto
             // 
@@ -207,7 +249,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
             this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 250;
+            this.descripcion.Width = 220;
             // 
             // version
             // 
@@ -230,37 +272,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.usuario.Name = "usuario";
             this.usuario.ReadOnly = true;
             this.usuario.Width = 110;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(462, 102);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(95, 39);
-            this.btnAgregar.TabIndex = 17;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(563, 102);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(95, 39);
-            this.btnEditar.TabIndex = 18;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(664, 102);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(95, 39);
-            this.btnEliminar.TabIndex = 19;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
             // 
             // frmProyecto
             // 
@@ -296,13 +307,14 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvProyectos;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_proyecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn version;
         private System.Windows.Forms.DataGridViewTextBoxColumn alcance;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnAgregar;
     }
 }
