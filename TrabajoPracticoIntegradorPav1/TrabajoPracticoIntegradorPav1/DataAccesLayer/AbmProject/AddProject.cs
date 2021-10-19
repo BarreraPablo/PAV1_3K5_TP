@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TrabajoPracticoIntegradorPav1.Entities;
 
-namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient
+namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmProject
 {
-    public class AddClient
+    public class AddProject
     {
-        public static bool Add(Client c)
+        public static bool Add(Project p)
         {
             bool result = false;
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["conexionDB"];
@@ -20,18 +20,15 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.AbmClient
 
             try
             {
-                string consulta = "INSERT INTO Clientes (cuit, razon_social, calle, numero, fecha_alta, id_barrio, id_contacto) VALUES (@cuit, @razon_social, @calle, @numero, @fecha_alta, @barrio, @contacto)";
+                string consulta = "INSERT INTO Proyectos (id_producto, descripcion, version, alcance, id_responsable) VALUES (@id_producto, @descripcion, @version, @alcance, @id_responsable)";
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.Parameters.AddWithValue("@cuit", c.cuit);
-                cmd.Parameters.AddWithValue("@razon_social", c.razon_social);
-                cmd.Parameters.AddWithValue("@calle", c.calle);
-                cmd.Parameters.AddWithValue("@numero", c.numero);
-                cmd.Parameters.AddWithValue("@fecha_alta", c.fecha_alta);
-                cmd.Parameters.AddWithValue("@barrio", c.id_barrio);
-                cmd.Parameters.AddWithValue("@contacto", c.id_contacto);
-
+                cmd.Parameters.AddWithValue("@id_producto", p.id_producto);
+                cmd.Parameters.AddWithValue("@descripcion", p.descripcion);
+                cmd.Parameters.AddWithValue("@version", p.version);
+                cmd.Parameters.AddWithValue("@alcance", p.alcance);
+                cmd.Parameters.AddWithValue("@id_responsable", p.id_responsable);
                 cmd.CommandText = consulta;
 
                 cn.Open();

@@ -76,6 +76,11 @@
     <Compile Include="Business\NeighborhoodService.cs" />
     <Compile Include="Business\ProductService.cs" />
     <Compile Include="DataAccesLayer\AbmClient\AddClient.cs" />
+    <Compile Include="DataAccesLayer\AbmClient\GetClient.cs" />
+    <Compile Include="DataAccesLayer\AbmProject\AddProject.cs" />
+    <Compile Include="DataAccesLayer\AbmProject\DeleteProject.cs" />
+    <Compile Include="DataAccesLayer\AbmProject\EditProject.cs" />
+    <Compile Include="DataAccesLayer\AbmProject\GetProject.cs" />
     <Compile Include="DataAccesLayer\IGeneralDao.cs" />
     <Compile Include="DataAccesLayer\NeighborhoodDao.cs" />
     <Compile Include="DataAccesLayer\ProductDao.cs" />
@@ -91,6 +96,7 @@
     <Compile Include="Entities\Neighborhood.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Producto.cs" />
+    <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\Proyecto.cs" />
     <Compile Include="Entities\tpDbContext.cs" />
     <Compile Include="Entities\User.cs" />
@@ -120,6 +126,12 @@
     </Compile>
     <Compile Include="Presentation\frmFacturas.Designer.cs">
       <DependentUpon>frmFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmProyecto.Designer.cs">
+      <DependentUpon>frmProyecto.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\frmSimple.cs">
       <SubType>Form</SubType>
@@ -158,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmFacturas.resx">
       <DependentUpon>frmFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmProyecto.resx">
+      <DependentUpon>frmProyecto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmSimple.resx">
       <DependentUpon>frmSimple.cs</DependentUpon>
