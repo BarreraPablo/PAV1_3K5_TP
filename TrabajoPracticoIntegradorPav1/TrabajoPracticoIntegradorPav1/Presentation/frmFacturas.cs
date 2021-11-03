@@ -125,5 +125,21 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 frm.ShowDialog();
             }
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if (dgvFacturas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Tiene que seleccionar una factura al menos");
+                return;
+            }
+
+            var facturaSeleccionada = (dynamic)dgvFacturas.SelectedRows[0].DataBoundItem;
+
+            using (var frm = new frmVisualizadorFactura((int)facturaSeleccionada.id_factura))
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }

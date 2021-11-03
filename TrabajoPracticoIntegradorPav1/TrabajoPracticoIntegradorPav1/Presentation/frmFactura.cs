@@ -68,6 +68,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
                     btnBaja.Visible = true;
                     btnFacturar.Visible = false;
+                    btnImprimir.Visible = true;
                 }
             }
         }
@@ -272,6 +273,14 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             MessageBox.Show("La factura a sido borrada con exito", "Atencion", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            using(var frm = new frmVisualizadorFactura(facturaActual.id_factura))
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

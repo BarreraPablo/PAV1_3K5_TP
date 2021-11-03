@@ -50,6 +50,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.Cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioCreador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
@@ -107,6 +108,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.btnImprimir);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.chkDadasDeBaja);
             this.groupBox2.Controls.Add(this.btnVer);
@@ -282,6 +284,17 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.total.Name = "total";
             this.total.ReadOnly = true;
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Location = new System.Drawing.Point(664, 212);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(95, 44);
+            this.btnImprimir.TabIndex = 24;
+            this.btnImprimir.Text = "Imprimir factura";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // frmFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,5 +334,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuarioCreador;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

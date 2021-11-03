@@ -54,6 +54,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.btnEliminar = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.MaskedTextBox();
             this.btnBaja = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
@@ -315,7 +316,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // btnBaja
             // 
             this.btnBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaja.Location = new System.Drawing.Point(155, 444);
+            this.btnBaja.Location = new System.Drawing.Point(21, 444);
             this.btnBaja.Name = "btnBaja";
             this.btnBaja.Size = new System.Drawing.Size(255, 37);
             this.btnBaja.TabIndex = 29;
@@ -324,11 +325,24 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.btnBaja.Visible = false;
             this.btnBaja.Click += new System.EventHandler(this.btnBaja_Click);
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Location = new System.Drawing.Point(289, 444);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(255, 37);
+            this.btnImprimir.TabIndex = 30;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Visible = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // frmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(571, 504);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.groupBox2);
@@ -375,5 +389,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn desProyecto;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
