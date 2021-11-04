@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.SqlServer;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -70,6 +71,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                     btnFacturar.Visible = false;
                     btnImprimir.Visible = true;
                 }
+
+                cargarTotalizadores();
             }
         }
 
@@ -93,6 +96,19 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             cbProyecto.SelectedValue = -1;
         }
 
+        private void cargarTotalizadores()
+        {
+            var total = 0;
+            foreach(DataRow row in dtDetalle.Rows)
+            {
+                total += int.Parse(row["precio"].ToString());
+            }
+
+            txtImporteNeto.Text = Math.Round(total / 1.21, 2).ToString();
+            txtTotalIva.Text = Math.Round(total - (total / 1.21), 2).ToString();
+            txtImporteTotal.Text = total.ToString();
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (!validarAgregar())
@@ -114,6 +130,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             dgvDetalle.Refresh();
 
             resetCombos();
+            cargarTotalizadores();
+            txtPrecio.Value = txtPrecio.Minimum;
         }
 
         private bool validarAgregar()
@@ -122,6 +140,33 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             {
                 MessageBox.Show("Tiene que seleccionar un producto o un proyecto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+
+            var productoSeleccionado = (Producto)cbProducto.SelectedItem;
+            var proyectoSeleccionado = (Proyecto)cbProyecto.SelectedItem;
+
+            if (productoSeleccionado.id_producto != -1)
+            {
+                foreach (DataRow row in dtDetalle.Rows)
+                {
+                    if(int.Parse(row["id_producto"].ToString()) == productoSeleccionado.id_producto)
+                    {
+                        MessageBox.Show("Ya ha ingresado este producto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+
+            if (proyectoSeleccionado.id_proyecto != -1)
+            {
+                foreach (DataRow row in dtDetalle.Rows)
+                {
+                    if (int.Parse(row["id_proyecto"].ToString()) == proyectoSeleccionado.id_proyecto)
+                    {
+                        MessageBox.Show("Ya ha ingresado este proyecto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
             }
 
             return true;
@@ -173,6 +218,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 index++;
             }
             dgvDetalle.Refresh();
+            cargarTotalizadores();
         }
 
         private void btnFacturar_Click(object sender, EventArgs e)
@@ -182,32 +228,42 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
             var factura = new Factura();
             var detalleFacturas = new List<FacturasDetalle>();
-            factura.id_cliente = int.Parse(cbCliente.SelectedValue.ToString());
-            factura.numero_factura = new Random().Next(5, 6000).ToString();
-            factura.fecha = DateTime.ParseExact(txtFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            factura.id_usuario_creador = ValidateUser.UsuarioLogeado.id_usuario;
-            factura.borrado = false;
-            factura.FacturasDetalles = detalleFacturas;
-
-
-            foreach (DataRow row in dtDetalle.Rows)
-            {
-                var detalleFactura = new FacturasDetalle();
-                detalleFactura.id_proyecto = int.Parse(row["id_proyecto"].ToString()) != -1 ? int.Parse(row["id_proyecto"].ToString()) : (int?)null;
-                detalleFactura.id_producto = int.Parse(row["id_producto"].ToString()) != -1 ? int.Parse(row["id_producto"].ToString()) : (int?)null;
-                detalleFactura.precio = int.Parse(row["precio"].ToString());
-                detalleFactura.borrado = false;
-                detalleFactura.numero_orden = int.Parse(row["numero_orden"].ToString());
-                detalleFacturas.Add(detalleFactura);
-            }
 
             using(var context = new tpDbContext())
             {
+                factura.id_cliente = int.Parse(cbCliente.SelectedValue.ToString());
+                factura.numero_factura = context.Facturas.ToList().Max(f => Convert.ToInt64(f.numero_factura) + 1).ToString();
+                factura.fecha = DateTime.ParseExact(txtFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                factura.id_usuario_creador = ValidateUser.UsuarioLogeado.id_usuario;
+                factura.borrado = false;
+                factura.FacturasDetalles = detalleFacturas;
+
+
+                foreach (DataRow row in dtDetalle.Rows)
+                {
+                    var detalleFactura = new FacturasDetalle();
+                    detalleFactura.id_proyecto = int.Parse(row["id_proyecto"].ToString()) != -1 ? int.Parse(row["id_proyecto"].ToString()) : (int?)null;
+                    detalleFactura.id_producto = int.Parse(row["id_producto"].ToString()) != -1 ? int.Parse(row["id_producto"].ToString()) : (int?)null;
+                    detalleFactura.precio = int.Parse(row["precio"].ToString());
+                    detalleFactura.borrado = false;
+                    detalleFactura.numero_orden = int.Parse(row["numero_orden"].ToString());
+                    detalleFacturas.Add(detalleFactura);
+                }
+
                 context.Facturas.Add(factura);
                 context.SaveChanges();
             }
 
-            MessageBox.Show("Facturación realizada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var result = MessageBox.Show("Facturación realizada con exito, ¿desea generar la factura?", "Exito", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if(result == DialogResult.Yes)
+            {
+                using(var frm = new frmVisualizadorFactura(factura.id_factura))
+                {
+                    frm.ShowDialog();
+                }
+            }
+
             this.DialogResult = DialogResult.OK;
         }
 
@@ -281,6 +337,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             {
                 frm.ShowDialog();
             }
+        }
+
+        private void frmFactura_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

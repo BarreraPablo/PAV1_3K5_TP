@@ -55,6 +55,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.txtFecha = new System.Windows.Forms.MaskedTextBox();
             this.btnBaja = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
+            this.txtImporteNeto = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtTotalIva = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtImporteTotal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrecio)).BeginInit();
@@ -227,7 +233,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // btnFacturar
             // 
             this.btnFacturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFacturar.Location = new System.Drawing.Point(155, 444);
+            this.btnFacturar.Location = new System.Drawing.Point(155, 524);
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Size = new System.Drawing.Size(255, 37);
             this.btnFacturar.TabIndex = 25;
@@ -316,7 +322,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // btnBaja
             // 
             this.btnBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaja.Location = new System.Drawing.Point(21, 444);
+            this.btnBaja.Location = new System.Drawing.Point(21, 524);
             this.btnBaja.Name = "btnBaja";
             this.btnBaja.Size = new System.Drawing.Size(255, 37);
             this.btnBaja.TabIndex = 29;
@@ -328,7 +334,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // btnImprimir
             // 
             this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.Location = new System.Drawing.Point(289, 444);
+            this.btnImprimir.Location = new System.Drawing.Point(289, 524);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(255, 37);
             this.btnImprimir.TabIndex = 30;
@@ -337,11 +343,74 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.btnImprimir.Visible = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // txtImporteNeto
+            // 
+            this.txtImporteNeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImporteNeto.Location = new System.Drawing.Point(84, 478);
+            this.txtImporteNeto.Name = "txtImporteNeto";
+            this.txtImporteNeto.ReadOnly = true;
+            this.txtImporteNeto.Size = new System.Drawing.Size(116, 27);
+            this.txtImporteNeto.TabIndex = 31;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(92, 458);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 17);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Importe neto";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(226, 458);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(110, 17);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "Total IVA 21%";
+            // 
+            // txtTotalIva
+            // 
+            this.txtTotalIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalIva.Location = new System.Drawing.Point(220, 478);
+            this.txtTotalIva.Name = "txtTotalIva";
+            this.txtTotalIva.ReadOnly = true;
+            this.txtTotalIva.Size = new System.Drawing.Size(116, 27);
+            this.txtTotalIva.TabIndex = 33;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(369, 458);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 17);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Importe total";
+            // 
+            // txtImporteTotal
+            // 
+            this.txtImporteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImporteTotal.Location = new System.Drawing.Point(364, 478);
+            this.txtImporteTotal.Name = "txtImporteTotal";
+            this.txtImporteTotal.ReadOnly = true;
+            this.txtImporteTotal.Size = new System.Drawing.Size(116, 27);
+            this.txtImporteTotal.TabIndex = 35;
+            // 
             // frmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 504);
+            this.ClientSize = new System.Drawing.Size(571, 573);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtImporteTotal);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtTotalIva);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtImporteNeto);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnBaja);
             this.Controls.Add(this.txtFecha);
@@ -350,10 +419,10 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbCliente);
             this.Controls.Add(this.label5);
-            this.MaximumSize = new System.Drawing.Size(587, 543);
             this.MinimumSize = new System.Drawing.Size(587, 543);
             this.Name = "frmFactura";
             this.Text = "Factura";
+            this.Load += new System.EventHandler(this.frmFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -390,5 +459,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn desProyecto;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.TextBox txtImporteNeto;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtTotalIva;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtImporteTotal;
     }
 }

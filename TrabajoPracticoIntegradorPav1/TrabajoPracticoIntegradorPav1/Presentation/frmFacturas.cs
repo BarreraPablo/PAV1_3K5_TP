@@ -66,7 +66,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                         total = f.Sum(c => c.FacturasDetalles.Select(r => r.precio).Sum())
                     }).ToList();
 
-                var facturasListadoGrilla = facturasResultado.Select(c => new { c.id_factura, c.numero_factura, c.razon_social, fecha = c.fecha.ToString("dd/MM/yyyy"), cuit = c.cuit, usuario = c.usuario, total = c.total }).ToList();
+                var facturasListadoGrilla = facturasResultado
+                    .Select(c => new { c.id_factura, numero_factura = Convert.ToInt32(c.numero_factura), c.razon_social, fecha = c.fecha.ToString("dd/MM/yyyy"), cuit = c.cuit, usuario = c.usuario, total = c.total })
+                    .OrderBy(f => f.numero_factura).ToList();
 
                 dgvFacturas.AutoGenerateColumns = false;
                 context.Configuration.LazyLoadingEnabled = false;
