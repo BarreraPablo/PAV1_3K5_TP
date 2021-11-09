@@ -102,6 +102,7 @@
     <Compile Include="DataAccesLayer\IGeneralDao.cs" />
     <Compile Include="DataAccesLayer\NeighborhoodDao.cs" />
     <Compile Include="DataAccesLayer\ProductDao.cs" />
+    <Compile Include="DataAccesLayer\Statiscal\GetProjectsForUser.cs" />
     <Compile Include="DataAccesLayer\UnitOfWork.cs" />
     <Compile Include="DataAccesLayer\ValidateUser.cs" />
     <Compile Include="Entities\Barrio.cs" />
@@ -151,6 +152,12 @@
     <Compile Include="Presentation\frmProyecto.Designer.cs">
       <DependentUpon>frmProyecto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmReporteEstadisticaProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmReporteEstadisticaProyectos.Designer.cs">
+      <DependentUpon>frmReporteEstadisticaProyectos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmSimple.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,7 +198,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtFactura.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\dtProyecto.cs">
+      <DependentUpon>dtProyecto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\dtProyecto.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtProyecto.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Reports\rptProyecto.rdlc" />
     <EmbeddedResource Include="Presentation\frmContacto.resx">
       <DependentUpon>frmContacto.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmProyecto.resx">
       <DependentUpon>frmProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmReporteEstadisticaProyectos.resx">
+      <DependentUpon>frmReporteEstadisticaProyectos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmSimple.resx">
       <DependentUpon>frmSimple.cs</DependentUpon>
@@ -259,6 +278,17 @@
     <None Include="Reports\dtFactura.xss">
       <DependentUpon>dtFactura.xsd</DependentUpon>
     </None>
+    <None Include="Reports\dtProyecto.xsc">
+      <DependentUpon>dtProyecto.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dtProyecto.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtProyecto.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\dtProyecto.xss">
+      <DependentUpon>dtProyecto.xsd</DependentUpon>
+    </None>
     <None Include="Resources\100273_information_system_icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -284,18 +314,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SqlServerTypes\x64\" />
+    <Folder Include="SqlServerTypes\x86\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

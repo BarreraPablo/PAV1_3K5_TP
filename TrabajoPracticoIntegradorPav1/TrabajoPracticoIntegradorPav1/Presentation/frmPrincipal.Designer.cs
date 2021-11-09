@@ -40,6 +40,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.btnFacturas = new System.Windows.Forms.Button();
             this.btnTransacciones = new System.Windows.Forms.Button();
             this.panelSubMenuSoporte = new System.Windows.Forms.Panel();
+            this.btnProyectos = new System.Windows.Forms.Button();
             this.btnContactos = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnBarrios = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelPadre = new System.Windows.Forms.Panel();
-            this.btnProyectos = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.pnlSubMenuReportes.SuspendLayout();
             this.panelSubMenuTransacciones.SuspendLayout();
@@ -135,6 +135,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.button3.Text = "Reporte de proyectos";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -228,6 +229,23 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.panelSubMenuSoporte.Name = "panelSubMenuSoporte";
             this.panelSubMenuSoporte.Size = new System.Drawing.Size(211, 179);
             this.panelSubMenuSoporte.TabIndex = 2;
+            // 
+            // btnProyectos
+            // 
+            this.btnProyectos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProyectos.FlatAppearance.BorderSize = 0;
+            this.btnProyectos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProyectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProyectos.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnProyectos.Location = new System.Drawing.Point(0, 138);
+            this.btnProyectos.Name = "btnProyectos";
+            this.btnProyectos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnProyectos.Size = new System.Drawing.Size(211, 34);
+            this.btnProyectos.TabIndex = 5;
+            this.btnProyectos.Text = "Proyectos";
+            this.btnProyectos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProyectos.UseVisualStyleBackColor = true;
+            this.btnProyectos.Click += new System.EventHandler(this.btnProyectos_Click);
             // 
             // btnContactos
             // 
@@ -342,23 +360,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             this.panelPadre.Name = "panelPadre";
             this.panelPadre.Size = new System.Drawing.Size(788, 542);
             this.panelPadre.TabIndex = 1;
-            // 
-            // btnProyectos
-            // 
-            this.btnProyectos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProyectos.FlatAppearance.BorderSize = 0;
-            this.btnProyectos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProyectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProyectos.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnProyectos.Location = new System.Drawing.Point(0, 138);
-            this.btnProyectos.Name = "btnProyectos";
-            this.btnProyectos.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnProyectos.Size = new System.Drawing.Size(211, 34);
-            this.btnProyectos.TabIndex = 5;
-            this.btnProyectos.Text = "Proyectos";
-            this.btnProyectos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProyectos.UseVisualStyleBackColor = true;
-            this.btnProyectos.Click += new System.EventHandler(this.btnProyectos_Click);
             // 
             // frmPrincipal
             // 
