@@ -19,6 +19,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         {
             InitializeComponent();
             obtenerClientes();
+            obtenerData();
         }
 
         private void frmVolumenFacturacion_Load(object sender, EventArgs e)
@@ -82,12 +83,12 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
                 if (hayFechaDesdeValida)
                 {
-                    query = query.Where(f => f.fecha.Year >= fechaDesde.Year && f.fecha.Day >= fechaDesde.Day && f.fecha.Month >= fechaDesde.Month);
+                    query = query.Where(f => f.fecha >= fechaDesde && f.fecha >= fechaDesde && f.fecha >= fechaDesde);
                 }
 
                 if (hayFechaHastaValida)
                 {
-                    query = query.Where(f => f.fecha.Year <= fechaHasta.Year && f.fecha.Day <= fechaHasta.Day && f.fecha.Month <= fechaHasta.Month);
+                    query = query.Where(f => f.fecha <= fechaHasta && f.fecha <= fechaHasta && f.fecha <= fechaHasta);
                 };
 
                 query = query.OrderBy(f => f.fecha.Month);
@@ -95,9 +96,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 var resultados = query.ToList().Select(factura =>
                 new
                 {
-                    nombre_mes = factura.fecha.ToString("MMMM", new CultureInfo("es-ES")).FirstCharToUpper(),
+                    nombre_mes = factura.fecha.ToString("yy") + "/" + factura.fecha.ToString("MMMM", new CultureInfo("es-ES")).FirstCharToUpper(),
                     cliente_nombre = factura.Cliente.razon_social,
-                    fecha_numero_mes = factura.fecha.Month,
+                    fecha_numero_mes = Int32.Parse(factura.fecha.Year.ToString() + factura.fecha.Month.ToString()),
                     fecha = factura.fecha.ToString("D", new CultureInfo("es-ES")),
                     total = factura.FacturasDetalles.Select(f => f.precio).Sum(),
                     numero_factura = factura.numero_factura

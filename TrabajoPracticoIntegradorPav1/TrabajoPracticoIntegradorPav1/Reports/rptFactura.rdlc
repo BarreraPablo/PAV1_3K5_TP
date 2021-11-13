@@ -513,7 +513,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -572,7 +571,7 @@
             <DataSetName>dtDetalle</DataSetName>
             <Top>3.03in</Top>
             <Left>0.7025in</Left>
-            <Height>0.53125in</Height>
+            <Height>0.53124in</Height>
             <Width>7.09375in</Width>
             <ZIndex>5</ZIndex>
             <Style>
@@ -978,7 +977,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>Importe neto: </Value>
+                          <Value>Subtotal: </Value>
                           <Style />
                         </TextRun>
                       </TextRuns>
@@ -1142,7 +1141,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>Importe total:</Value>
+                          <Value>Importe final:</Value>
                           <Style />
                         </TextRun>
                       </TextRuns>
