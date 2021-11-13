@@ -52,8 +52,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                     facturas = facturas.Where(f => f.id_usuario_creador == (int)cboUsuarioCreador.SelectedValue);
                 }
 
-                facturas = facturas.Where(f => f.borrado == chkDadasDeBaja.Checked);
-
                 var facturasResultado = facturas.GroupBy(c => new { c.id_factura, c.numero_factura, c.Cliente.razon_social, c.fecha, c.Cliente.cuit, c.Usuario.usuario1 })
                     .Select(f => new
                     {

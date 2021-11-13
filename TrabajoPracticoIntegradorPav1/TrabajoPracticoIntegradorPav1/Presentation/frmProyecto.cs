@@ -125,7 +125,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             try
             {
 
-                string consulta = "SELECT id_proyecto, id_producto, descripcion, version, alcance, id_responsable FROM Proyectos WHERE borrado IS NULL ";
+                string consulta = "SELECT id_proyecto, Productos.id_producto, nombre, usuario, descripcion, version, alcance, id_responsable FROM Proyectos INNER JOIN Productos on Proyectos.id_producto = Productos.id_producto INNER JOIN Usuarios ON Usuarios.id_usuario = Proyectos.id_responsable WHERE Proyectos.borrado IS NULL ";
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
@@ -138,6 +138,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(table);
 
+                dgvProyectos.AutoGenerateColumns = false;
                 dgvProyectos.DataSource = table;
             }
             catch (Exception)

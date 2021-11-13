@@ -35,8 +35,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.chkDadasDeBaja = new System.Windows.Forms.CheckBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.btnVer = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cboUsuarioCreador = new System.Windows.Forms.ComboBox();
@@ -50,7 +49,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.Cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioCreador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
@@ -109,8 +107,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Controls.Add(this.btnImprimir);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.chkDadasDeBaja);
             this.groupBox2.Controls.Add(this.btnVer);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cboUsuarioCreador);
@@ -131,25 +127,16 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Facturas";
             // 
-            // label3
+            // btnImprimir
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(51, 102);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 17);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Borradas";
-            // 
-            // chkDadasDeBaja
-            // 
-            this.chkDadasDeBaja.AutoSize = true;
-            this.chkDadasDeBaja.Location = new System.Drawing.Point(151, 104);
-            this.chkDadasDeBaja.Margin = new System.Windows.Forms.Padding(2);
-            this.chkDadasDeBaja.Name = "chkDadasDeBaja";
-            this.chkDadasDeBaja.Size = new System.Drawing.Size(15, 14);
-            this.chkDadasDeBaja.TabIndex = 2;
-            this.chkDadasDeBaja.UseVisualStyleBackColor = true;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Location = new System.Drawing.Point(664, 212);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(95, 44);
+            this.btnImprimir.TabIndex = 24;
+            this.btnImprimir.Text = "Imprimir factura";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnVer
             // 
@@ -284,17 +271,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.total.Name = "total";
             this.total.ReadOnly = true;
             // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.Location = new System.Drawing.Point(664, 212);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(95, 44);
-            this.btnImprimir.TabIndex = 24;
-            this.btnImprimir.Text = "Imprimir factura";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
             // frmFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,8 +302,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboUsuarioCreador;
         private System.Windows.Forms.Button btnVer;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox chkDadasDeBaja;
         private System.Windows.Forms.DataGridViewTextBoxColumn nroFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn razon_social;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;

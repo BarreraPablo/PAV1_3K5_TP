@@ -54,7 +54,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.version = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alcance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Responsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProyectos)).BeginInit();
@@ -104,11 +104,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(477, 76);
+            this.label5.Location = new System.Drawing.Point(491, 75);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.Size = new System.Drawing.Size(50, 17);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Usuario";
+            this.label5.Text = "Resp.";
             // 
             // cmbProductos
             // 
@@ -267,7 +267,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.descripcion,
             this.version,
             this.alcance,
-            this.usuario});
+            this.Responsable});
             this.dgvProyectos.Location = new System.Drawing.Point(11, 33);
             this.dgvProyectos.Name = "dgvProyectos";
             this.dgvProyectos.ReadOnly = true;
@@ -285,7 +285,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             // 
             // producto
             // 
-            this.producto.DataPropertyName = "id_producto";
+            this.producto.DataPropertyName = "nombre";
             this.producto.HeaderText = "Producto";
             this.producto.Name = "producto";
             this.producto.ReadOnly = true;
@@ -313,13 +313,13 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.alcance.Name = "alcance";
             this.alcance.ReadOnly = true;
             // 
-            // usuario
+            // Responsable
             // 
-            this.usuario.DataPropertyName = "id_responsable";
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            this.usuario.Width = 110;
+            this.Responsable.DataPropertyName = "usuario";
+            this.Responsable.HeaderText = "Responsable";
+            this.Responsable.Name = "Responsable";
+            this.Responsable.ReadOnly = true;
+            this.Responsable.Width = 110;
             // 
             // frmProyecto
             // 
@@ -358,15 +358,15 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.CheckBox chkBorrado;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_proyecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn version;
         private System.Windows.Forms.DataGridViewTextBoxColumn alcance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.CheckBox chkBorrado;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Responsable;
     }
 }

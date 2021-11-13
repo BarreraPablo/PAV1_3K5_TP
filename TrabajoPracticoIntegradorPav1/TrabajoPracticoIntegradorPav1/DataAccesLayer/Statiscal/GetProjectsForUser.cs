@@ -18,7 +18,7 @@ namespace TrabajoPracticoIntegradorPav1.DataAccesLayer.Statiscal
 
             try
             {
-                string consulta = "select Usuarios.usuario, count(Proyectos.id_responsable) as cantidad_proyectos_asignados from Proyectos inner join Usuarios on Proyectos.id_producto = Usuarios.id_usuario group by Usuarios.usuario";
+                string consulta = "select Usuarios.usuario, count(Proyectos.id_responsable) as cantidad_proyectos_asignados from Proyectos inner join Usuarios on Proyectos.id_responsable = Usuarios.id_usuario group by Usuarios.usuario";
 
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;

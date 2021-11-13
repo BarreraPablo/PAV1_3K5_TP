@@ -67,7 +67,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                     btnAgregar.Enabled = false;
                     btnEliminar.Enabled = false;
 
-                    btnBaja.Visible = true;
                     btnFacturar.Visible = false;
                     btnImprimir.Visible = true;
                 }
@@ -313,22 +312,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 cbProyecto.Enabled = false;
             else
                 cbProyecto.Enabled = true;
-        }
-
-        private void btnBaja_Click(object sender, EventArgs e)
-        {
-            using (var context = new tpDbContext())
-            {
-                context.Facturas.Attach(facturaActual);
-
-                facturaActual.borrado = true;
-
-                context.SaveChanges();
-            }
-
-            MessageBox.Show("La factura a sido borrada con exito", "Atencion", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            this.DialogResult = DialogResult.OK;
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
