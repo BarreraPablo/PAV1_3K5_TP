@@ -127,5 +127,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
             frmReporteEstadisticaProyectos form = new frmReporteEstadisticaProyectos();
             AddForm(form);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmVolumenFacturacion form = new frmVolumenFacturacion();
+            AddForm(form);
+        }
     }
 }
