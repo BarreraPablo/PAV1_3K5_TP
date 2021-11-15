@@ -111,6 +111,16 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 this.reportViewer1.RefreshReport();
             }
         }
+
+        private void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

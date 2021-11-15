@@ -4,5 +4,8 @@
 
     partial class dtProyecto
     {
+        partial class TablaEstatisticaDataTable
+        {
+        }
     }
 }

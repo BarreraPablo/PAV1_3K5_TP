@@ -109,6 +109,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.cboCliente.Name = "cboCliente";
             this.cboCliente.Size = new System.Drawing.Size(121, 21);
             this.cboCliente.TabIndex = 18;
+            this.cboCliente.SelectedIndexChanged += new System.EventHandler(this.cboCliente_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -119,6 +120,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.label2.Size = new System.Drawing.Size(58, 17);
             this.label2.TabIndex = 19;
             this.label2.Text = "Cliente";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
             // 
