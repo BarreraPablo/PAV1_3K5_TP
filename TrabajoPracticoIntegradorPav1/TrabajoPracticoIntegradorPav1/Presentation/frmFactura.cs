@@ -27,6 +27,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         public frmFactura(frmType modo, int? facturaId)
         {
             InitializeComponent();
+
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
             cargarCombos();
             inicializarTabla();
             fireEvents = true;

@@ -26,6 +26,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         {
             InitializeComponent();
 
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
             frmModo = modo;
 
             if (modo == frmContactoType.Editar)

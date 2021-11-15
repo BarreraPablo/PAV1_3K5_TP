@@ -18,6 +18,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         {
             InitializeComponent();
 
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
             cargarFactura(facturaId);
         }
 

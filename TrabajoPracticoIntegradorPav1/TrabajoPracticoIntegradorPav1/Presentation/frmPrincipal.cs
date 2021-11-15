@@ -19,6 +19,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentacion
         public frmPrincipal()
         {
             InitializeComponent();
+
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
             CustomizeDesign();
         }
 

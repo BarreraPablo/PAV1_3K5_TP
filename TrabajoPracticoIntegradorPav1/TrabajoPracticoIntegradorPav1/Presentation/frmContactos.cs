@@ -20,6 +20,9 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         public frmContactos()
         {
             InitializeComponent();
+
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
             cargarGrilla();
         }
 
