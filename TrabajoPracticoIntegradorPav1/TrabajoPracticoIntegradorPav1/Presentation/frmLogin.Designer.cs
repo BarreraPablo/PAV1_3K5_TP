@@ -69,7 +69,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(207, 20);
             this.txtUser.TabIndex = 1;
-            this.txtUser.Text = "administrador";
             // 
             // txtPassword
             // 
@@ -78,7 +77,6 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(207, 20);
             this.txtPassword.TabIndex = 2;
-            this.txtPassword.Text = "12345";
             // 
             // label1
             // 

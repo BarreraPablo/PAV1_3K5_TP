@@ -57,13 +57,23 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 cmd.Connection = cn;
 
                 DataTable table = new DataTable();
+                table.Columns.Add("id_barrio");
+                table.Columns.Add("nombre");
+
+                var opcionSeleccionar = table.NewRow();
+                opcionSeleccionar["id_barrio"] = -1;
+                opcionSeleccionar["nombre"] = "Seleccionar";
+
+                table.Rows.Add(opcionSeleccionar);
+
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(table);
+
 
                 cmbBarrio.DataSource = table;
                 cmbBarrio.DisplayMember = "nombre";
                 cmbBarrio.ValueMember = "id_barrio";
-                cmbBarrio.SelectedIndex = -1;
+                cmbBarrio.SelectedValue = -1;
             }
             catch (Exception)
             {
@@ -95,13 +105,22 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 cmd.Connection = cn;
 
                 DataTable table = new DataTable();
+                table.Columns.Add("id_contacto");
+                table.Columns.Add("nombreCompleto");
+
+                var opcionSeleccionar = table.NewRow();
+                opcionSeleccionar["id_contacto"] = -1;
+                opcionSeleccionar["nombreCompleto"] = "Seleccionar";
+
+                table.Rows.Add(opcionSeleccionar);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(table);
+
 
                 cmbContacto.DataSource = table;
                 cmbContacto.DisplayMember = "nombreCompleto";
                 cmbContacto.ValueMember = "id_contacto";
-                cmbContacto.SelectedIndex = -1;
+                cmbContacto.SelectedValue = -1;
             }
             catch (Exception ex)
             {
@@ -154,6 +173,48 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if(int.Parse(cmbBarrio.SelectedValue.ToString()) == -1)
+            {
+                MessageBox.Show("Debe seleccionar un barrio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (int.Parse(cmbContacto.SelectedValue.ToString()) == -1)
+            {
+                MessageBox.Show("Debe seleccionar un contacto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtCuit.Text.Length <= 5)
+            {
+                MessageBox.Show("Por favor ingrese un cuit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtRazonSocial.Text.Length <= 2)
+            {
+                MessageBox.Show("La razón social debe tener longitud mayor a 2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtCalle.Text.Length <= 2)
+            {
+                MessageBox.Show("Es necesario que ingrese una calle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtNumeroCalle.Text.Length == 0)
+            {
+                MessageBox.Show("Es necesario que ingrese un numero de calle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (!DateTime.TryParseExact(txtFechaAlta.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+            {
+                MessageBox.Show("La fecha es invalida, ingrese una fecha con formato dd/mm/aaaa", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             try
             {
@@ -166,13 +227,13 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 c.cuit = long.Parse(txtCuit.Text);
                 c.fecha_alta = DateTime.ParseExact(txtFechaAlta.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 c.fecha_alta = DateTime.Now;
-                c.id_barrio = (int)cmbBarrio.SelectedValue;
-                c.id_contacto = (int)cmbContacto.SelectedValue;
+                c.id_barrio = int.Parse(cmbBarrio.SelectedValue.ToString());
+                c.id_contacto = int.Parse(cmbContacto.SelectedValue.ToString());
 
                 bool result = AddClient.Add(c);
                 if (result)
                 {
-                    MessageBox.Show("Cliente agregado");
+                    MessageBox.Show("Cliente agregado", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrilla();
                     LimpiarCampos();
                     txtCuit.Focus();
@@ -212,7 +273,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             txtNumeroCalle.Text = c.numero.ToString();
             txtFechaAlta.Text = c.fecha_alta.ToString("dd/MM/yyyy");
             cmbBarrio.SelectedValue = c.id_barrio;
-            cmbBarrio.SelectedValue = c.id_contacto;
+            cmbContacto.SelectedValue = c.id_contacto;
         }
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -241,6 +302,49 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (int.Parse(cmbBarrio.SelectedValue.ToString()) == -1)
+            {
+                MessageBox.Show("Debe seleccionar un barrio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (int.Parse(cmbContacto.SelectedValue.ToString()) == -1)
+            {
+                MessageBox.Show("Debe seleccionar un contacto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtCuit.Text.Length <= 5)
+            {
+                MessageBox.Show("Por favor ingrese un cuit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtRazonSocial.Text.Length <= 2)
+            {
+                MessageBox.Show("La razón social debe tener longitud mayor a 2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtCalle.Text.Length <= 2)
+            {
+                MessageBox.Show("Es necesario que ingrese una calle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtNumeroCalle.Text.Length == 0)
+            {
+                MessageBox.Show("Es necesario que ingrese un numero de calle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (!DateTime.TryParseExact(txtFechaAlta.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+            {
+                MessageBox.Show("La fecha es invalida, ingrese una fecha con formato dd/mm/aaaa", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             using (var context = new tpDbContext())
             {
                 var clienteId = int.Parse(txtId.Text);
@@ -252,8 +356,8 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 cliente.cuit = txtCuit.Text;
                 cliente.fecha_alta = DateTime.ParseExact(txtFechaAlta.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 cliente.fecha_alta = DateTime.Now;
-                cliente.id_barrio = (int)cmbBarrio.SelectedValue;
-                cliente.id_contacto = (int)cmbContacto.SelectedValue;
+                cliente.id_barrio = int.Parse(cmbBarrio.SelectedValue.ToString());
+                cliente.id_contacto = int.Parse(cmbContacto.SelectedValue.ToString());
 
                 context.SaveChanges();
             }

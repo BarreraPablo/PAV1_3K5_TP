@@ -32,7 +32,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
             if (modo == frmContactoType.Editar)
             {
-                btnAceptar.Text = "Editar";
+                btnAceptar.Text = "Aceptar";
 
                 this.Contacto = contacto;
                 txtNombre.Text = contacto.nombre;

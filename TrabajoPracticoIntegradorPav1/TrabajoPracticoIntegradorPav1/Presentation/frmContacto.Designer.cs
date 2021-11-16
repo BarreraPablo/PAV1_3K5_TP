@@ -141,10 +141,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(287, 261);
             this.MinimumSize = new System.Drawing.Size(287, 261);
             this.Name = "frmContacto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contacto";
             this.ResumeLayout(false);
             this.PerformLayout();

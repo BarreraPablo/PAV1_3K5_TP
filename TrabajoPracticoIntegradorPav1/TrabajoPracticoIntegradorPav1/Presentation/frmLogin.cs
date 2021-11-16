@@ -31,16 +31,15 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 {
                     frmPrincipal windows = new frmPrincipal();
                     this.Hide();
-                    windows.Show();
-
-                    
+                    windows.ShowDialog();
+                    Environment.Exit(0);
                 }
                 else
                 {
                     MessageBox.Show("Usuario o contraseña incorrectos", "Error" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 MessageBox.Show("Error al intentar consultar con la base de datos");

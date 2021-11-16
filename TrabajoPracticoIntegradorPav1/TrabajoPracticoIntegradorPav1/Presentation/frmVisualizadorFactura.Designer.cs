@@ -49,6 +49,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.ClientSize = new System.Drawing.Size(861, 588);
             this.Controls.Add(this.reportViewer1);
             this.Name = "frmVisualizadorFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Visualizador factura";
             this.Load += new System.EventHandler(this.frmVisualizadorFactura_Load);
             this.ResumeLayout(false);

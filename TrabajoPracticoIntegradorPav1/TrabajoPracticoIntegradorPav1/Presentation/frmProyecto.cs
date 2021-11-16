@@ -57,13 +57,21 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 cmd.Connection = cn;
 
                 DataTable table = new DataTable();
+                table.Columns.Add("nombre");
+                table.Columns.Add("id_producto");
+
+                var seleccionarRow = table.NewRow();
+                seleccionarRow["nombre"] = "Seleccionar";
+                seleccionarRow["id_producto"] = -1;
+
+                table.Rows.Add(seleccionarRow);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(table);
 
                 cmbProductos.DataSource = table;
                 cmbProductos.DisplayMember = "nombre";
                 cmbProductos.ValueMember = "id_producto";
-                cmbProductos.SelectedIndex = -1;
+                cmbProductos.SelectedValue = -1;
             }
             catch (Exception)
             {
@@ -95,13 +103,20 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 cmd.Connection = cn;
 
                 DataTable table = new DataTable();
+                table.Columns.Add("usuario");
+                table.Columns.Add("id_usuario");
+                var seleccionarRow = table.NewRow();
+                seleccionarRow["usuario"] = "Seleccionar";
+                seleccionarRow["id_usuario"] = -1;
+
+                table.Rows.Add(seleccionarRow);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(table);
 
                 cmbUsuarios.DataSource = table;
                 cmbUsuarios.DisplayMember = "usuario";
                 cmbUsuarios.ValueMember = "id_usuario";
-                cmbUsuarios.SelectedIndex = -1;
+                cmbUsuarios.SelectedValue = -1;
             }
             catch (Exception)
             {
@@ -192,11 +207,11 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         //Metodo para limpiar los campos
         private void LimpiarCampos()
         {
-            cmbProductos.SelectedIndex = -1;
+            cmbProductos.SelectedValue = -1;
             txtDescripcion.Text = "";
             txtVersion.Text = "";
             txtAlcance.Text = "";
-            cmbUsuarios.SelectedIndex = -1;
+            cmbUsuarios.SelectedValue = -1;
             txtId.Text = "";
         }
 
@@ -205,16 +220,46 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
         {
             Project p = new Project();
             p.id_proyecto = String.IsNullOrEmpty(txtId.Text) ? 0 : int.Parse(txtId.Text);
-            p.id_producto = (int)cmbProductos.SelectedValue;
+            p.id_producto = int.Parse(cmbProductos.SelectedValue.ToString());
             p.descripcion = txtDescripcion.Text;
             p.version = txtVersion.Text;
             p.alcance = txtAlcance.Text;
-            p.id_responsable = (int)cmbUsuarios.SelectedValue;
+            p.id_responsable = int.Parse(cmbUsuarios.SelectedValue.ToString());
 
             return p;
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if(int.Parse(cmbProductos.SelectedValue.ToString()) == -1)
+            {
+                MessageBox.Show("Debe seleccionar un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (int.Parse(cmbUsuarios.SelectedValue.ToString()) == -1)
+            {
+                MessageBox.Show("Debe seleccionar un responsable", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtDescripcion.Text.Length <= 1)
+            {
+                MessageBox.Show("Debe ingresar una descripcion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtVersion.Text.Length <= 1)
+            {
+                MessageBox.Show("Debe ingresar una version", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtAlcance.Text.Length <= 1)
+            {
+                MessageBox.Show("Debe ingresar un alcance", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Project p = ObtenerDatosProyecto();
 
             try
@@ -222,7 +267,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
                 bool result = AddProject.Add(p);
                 if (result)
                 {
-                    MessageBox.Show("se agrego el proyecto correctamente");
+                    MessageBox.Show("Proyecto creado con exito", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrilla();
                     LimpiarCampos();
 
@@ -273,6 +318,36 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (int.Parse(cmbProductos.SelectedValue.ToString()) == 1)
+            {
+                MessageBox.Show("Debe seleccionar un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (int.Parse(cmbUsuarios.SelectedValue.ToString()) == 1)
+            {
+                MessageBox.Show("Debe seleccionar un responsable", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtDescripcion.Text.Length <= 1)
+            {
+                MessageBox.Show("Debe ingresar una descripcion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtVersion.Text.Length <= 1)
+            {
+                MessageBox.Show("Debe ingresar una version", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtAlcance.Text.Length <= 1)
+            {
+                MessageBox.Show("Debe ingresar un alcance", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Project p = ObtenerDatosProyecto();
             try
             {

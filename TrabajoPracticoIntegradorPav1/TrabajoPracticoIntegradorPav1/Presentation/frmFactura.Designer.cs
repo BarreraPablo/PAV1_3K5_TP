@@ -407,6 +407,7 @@ namespace TrabajoPracticoIntegradorPav1.Presentation
             this.Controls.Add(this.label5);
             this.MinimumSize = new System.Drawing.Size(587, 543);
             this.Name = "frmFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Factura";
             this.Load += new System.EventHandler(this.frmFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
