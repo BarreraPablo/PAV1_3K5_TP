@@ -2,8 +2,6 @@
 
 ### Integrantes
 - Barrera, Pablo
-- Heredia, Jesus
-- Noel Araoz
 - Rostirolla, Pablo 
 
 ## Actividad:
